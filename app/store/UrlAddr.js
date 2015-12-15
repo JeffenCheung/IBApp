@@ -9,7 +9,8 @@ Ext.define("IBApp.store.UrlAddr", {
         ],
         data: [
         {
-        	//会议室智能管理软件CCIP(council chamber intelligence platform)项目开发环境[Intranet内网](HayaBuilding) 
+        	//add profiles by jeffen@pactera 2015/12/15
+            //会议室智能管理软件CCIP(council chamber intelligence platform)项目开发环境[Intranet内网](HayaBuilding) 
             //urlLogin: 'http://localhost:8080/pactera-jeesite/restService/userservice/0.2',
             //urlLogin: 'http://192.168.5.7:9301/pactera-jeesite/restService/userservice/0.2',
             //
