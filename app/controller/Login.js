@@ -95,7 +95,7 @@ Ext.define('IBApp.controller.Login', {
 	    loginView.setMasked(false);
 
 	    //为当前userId为别名
-		window.plugins.jPushPlugin.setAlias(Ext.getStore("UserInfo").getAt(0).get('userId'));
+		//window.plugins.jPushPlugin.setAlias(Ext.getStore("UserInfo").getAt(0).get('userId'));
 
 	    /* setFunctionIcon via userRole */
 	    mainMenuView.setFunctionIcon(userRoles);
@@ -136,7 +136,7 @@ Ext.define('IBApp.controller.Login', {
 
 
 		//退出登录时，清除别名，就不会再接收到推送信息了
-		window.plugins.jPushPlugin.setAlias('');
+		//window.plugins.jPushPlugin.setAlias('');
 
 	    this.getApplication().getHistory().add(Ext.create('Ext.app.Action', {url: 'login'}));
 	}
