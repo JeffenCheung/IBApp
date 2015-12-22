@@ -88,7 +88,7 @@ Ext.application({
             var bToObj  = Ext.JSON.decode(data);
 
             var curUrl = window.location.hash;
-            if ( (curUrl !='#login') && (bToObj.alert.indexOf('通知') != -1) ) {
+            if ( (curUrl !='#login') && (bToObj.extras['cn.jpush.android.EXTRA'].msgType == 1) ) {
                 Ext.Msg.show({
                     message: bToObj.extras['cn.jpush.android.EXTRA'].msg,
                     buttons: [
@@ -124,7 +124,7 @@ Ext.application({
                             mtReplyObj.replyerId = Ext.getStore("UserInfo").getAt(0).get('userId');
                             mtReplyObj.replyerFlag = 1; //回复人标识 1.内部人员2.外部人员 
                             mtReplyObj.replyDate =Ext.JSON.encodeDate(new Date());//回复日期
-                            mtReplyObj.meetingId = mtObj.mtId;//会议ID
+                            mtReplyObj.meetingId = bToObj.extras['cn.jpush.android.EXTRA'].mtId;//会议ID
                             mtReplyObj.replyMethod = 1; //回复方式1.手机APP 2.网页 3.短信 
                             me.getApplication().getController('MyMeetings').onMtReplyCommand(mtReplyObj);
                         };

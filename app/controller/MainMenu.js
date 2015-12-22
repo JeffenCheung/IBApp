@@ -53,9 +53,7 @@ Ext.define("IBApp.controller.MainMenu", {
     },
 
     onRoomBookingCommand: function () {
-        var userId = Ext.getStore("UserInfo").getAt(0).get('userId');
-       
-        this.getRoomBookingView().updateMeetingTypeSelector(userId);
+        this.getRoomBookingView().updateView();
         this.getApplication().getHistory().add(Ext.create('Ext.app.Action', {url: 'roombooking'}));
     },
 
@@ -158,6 +156,8 @@ Ext.define("IBApp.controller.MainMenu", {
                      'mtId':resultResponse[i].mtId,
                      'organizerName':resultResponse[i].organizerName,
                      'mtContent':resultResponse[i].mtContent,
+                     'replyNum':resultResponse[i].replyNum,
+                     'attenderNum':resultResponse[i].attenderNum,
                     });
 
 
@@ -170,6 +170,15 @@ Ext.define("IBApp.controller.MainMenu", {
                     {
                         curUser.set('statusEn','waiting');
                         curUser.set('status','未开始');
+
+                        var now = new Date().getTime();
+                        var startDate = curUser.get('start').getTime();
+                        
+                        if( startDate <= now )
+                        {
+                            curUser.set('statusEn','begining');
+                            curUser.set('status','进行中');
+                        }
                     }
                     if(resultResponse[i].mtFlag == 3)
                     {

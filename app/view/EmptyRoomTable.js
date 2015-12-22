@@ -240,50 +240,22 @@ Ext.define('IBApp.view.EmptyRoomTable', {
    		},
 
    		/**
-   		 * Returns true if the specific index is at the end of the row
-   		 * Used to determine if a row terminating tag is needed
-   		 * @method
-   		 * @private
-   		 * @param {Number} currentIndex
-   		 * @return {Boolean}
-   		 */
-   		isEndOfRow: function(currentIndex){
-   			return (currentIndex % 7) === 0 && (currentIndex > 0);
-   		},
-
-   		/**
-   		 * Returns true if the specific index is at the start of the row.
-   		 * USed to determine whether if a row opening tag is needed
-   		 * @method
-   		 * @private
-   		 * @param {Number} currentIndex
-   		 * @return {Boolean}
-   		 */
-   		isStartOfRow: function(currentIndex){
-   			return ((currentIndex-1) % 7) === 0 && (currentIndex-1 >= 0);
-   		},
-
-	    isEndOfPeriod: function(currentIndex){
-			return currentIndex % this.me.periodRowDayCount === 0;
-	    },
-
-   		/**
    		 * Gets an array containing the first 7 dates to be used in headings
    		 * @method
    		 * @private
    		 * @param {Object} values
    		 * @return {Date[]}
    		 */
-   		getDaysArray: function(values){
-   			var daysArray = [],
-   				i;
+   		// getDaysArray: function(values){
+   		// 	var daysArray = [],
+   		// 		i;
 
-   			for(i = 0; i < this.me.periodRowDayCount; i++){
-   				daysArray.push(values[i]);
-   			}
+   		// 	for(i = 0; i < this.me.periodRowDayCount; i++){
+   		// 		daysArray.push(values[i]);
+   		// 	}
 
-   			return daysArray;
-   		},
+   		// 	return daysArray;
+   		// },
 
       getRoomsArray: function() {
         var roomsArray = [];
@@ -436,19 +408,18 @@ Ext.define('IBApp.view.EmptyRoomTable', {
 	 */
 	applyViewMode: function(viewMode){
 
-		viewMode = viewMode.toUpperCase();
-
-        var viewModeFns = IBApp.view.EmptyRoomTable[viewMode.toUpperCase()];
+		  viewMode = viewMode.toUpperCase();
+      var viewModeFns = IBApp.view.EmptyRoomTable[viewMode.toUpperCase()];
 
 		// Update the mode specific functions/values
-        this.getStartDate = viewModeFns.getStartDate;
-        this.getTotalDays = viewModeFns.getTotalDays;
-        this.dateAttributeFormat = viewModeFns.dateAttributeFormat;
-        this.getNextIterationDate = viewModeFns.getNextIterationDate;
-        this.getDeltaDate = viewModeFns.getDeltaDate;
-        this.periodRowDayCount = viewModeFns.periodRowDayCount;
+      this.getStartDate = viewModeFns.getStartDate;
+      this.getTotalDays = viewModeFns.getTotalDays;
+      this.dateAttributeFormat = viewModeFns.dateAttributeFormat;
+      this.getNextIterationDate = viewModeFns.getNextIterationDate;
+      this.getDeltaDate = viewModeFns.getDeltaDate;
+      this.periodRowDayCount = viewModeFns.periodRowDayCount;
 
-        Ext.apply(this.commonTemplateFunctions, {me: this})
+      Ext.apply(this.commonTemplateFunctions, {me: this})
 
 		// Create the template
 		this.setTpl(new Ext.XTemplate((viewModeFns.tpl || this.getBaseTpl()).join(''), this.commonTemplateFunctions));
@@ -490,7 +461,7 @@ Ext.define('IBApp.view.EmptyRoomTable', {
   			iterDate = this.getStartDate(baseDate), // date current mode will start at
   			totalDays = this.getTotalDays(baseDate), // total days to be rendered in current mode
         record;
-				
+
 		this.getStore().suspendEvents();
 		this.getStore().data.clear();
 		
@@ -522,24 +493,24 @@ Ext.define('IBApp.view.EmptyRoomTable', {
 	 * @param {Number} delta - integer representing direction (1 = forward, =1 = backward)
 	 * @return {void}
 	 */
-	refreshDelta: function(delta) {
-		var v = this.currentDate || new Date();
+	// refreshDelta: function(delta) {
+	// 	var v = this.currentDate || new Date();
 
-		var newDate = this.getDeltaDate(v, delta);
+	// 	var newDate = this.getDeltaDate(v, delta);
 
-		// don't move if we've reached the min/max dates
-		if (this.isOutsideMinMax(newDate)) {
-			return;
-		}
+	// 	// don't move if we've reached the min/max dates
+	// 	if (this.isOutsideMinMax(newDate)) {
+	// 		return;
+	// 	}
 
-		this.currentDate = newDate;
+	// 	this.currentDate = newDate;
 
-		this.refresh();
+	// 	this.refresh();
 		
-		var minMaxDate = this.getPeriodMinMaxDate();
+	// 	var minMaxDate = this.getPeriodMinMaxDate();
 		
-		this.fireEvent('periodchange', this, minMaxDate.min.get('date'), minMaxDate.max.get('date'), (delta > 0 ? 'forward' : 'back'));
-	},
+	// 	this.fireEvent('periodchange', this, minMaxDate.min.get('date'), minMaxDate.max.get('date'), (delta > 0 ? 'forward' : 'back'));
+	// },
 	
 	/**
 	 * Returns the current view's minimum and maximum date collection objects
@@ -547,12 +518,12 @@ Ext.define('IBApp.view.EmptyRoomTable', {
 	 * @private
 	 * @return {Object} Object in the format {min: {}, max: {}}
 	 */
-	getPeriodMinMaxDate: function(){
-		return {
-			min: this.getStore().data.first(),
-			max: this.getStore().data.last()
-		};
-	},
+	// getPeriodMinMaxDate: function(){
+	// 	return {
+	// 		min: this.getStore().data.first(),
+	// 		max: this.getStore().data.last()
+	// 	};
+	// },
 	
 	/**
 	 * Returns true or false depending on whether the view that is currently on display is outside or inside the min/max dates set
@@ -561,17 +532,17 @@ Ext.define('IBApp.view.EmptyRoomTable', {
 	 * @param {Date} date A date within the current period, generally the selected date
 	 * @return {Boolean}
 	 */
-	isOutsideMinMax: function(date){
-		var outside = false;
+	// isOutsideMinMax: function(date){
+	// 	var outside = false;
 		
-		if(this.getViewMode() === 'MONTH'){
-			outside = ((this.minDate && Ext.Date.getLastDateOfMonth(date) < this.minDate) || (this.maxDate && Ext.Date.getFirstDateOfMonth(date) > this.maxDate));
-		} else {
-			outside = ((this.minDate && this.getWeekendDate(date) < this.minDate) || (this.maxDate && this.getStartDate(date) > this.maxDate));
-		}
+	// 	if(this.getViewMode() === 'MONTH'){
+	// 		outside = ((this.minDate && Ext.Date.getLastDateOfMonth(date) < this.minDate) || (this.maxDate && Ext.Date.getFirstDateOfMonth(date) > this.maxDate));
+	// 	} else {
+	// 		outside = ((this.minDate && this.getWeekendDate(date) < this.minDate) || (this.maxDate && this.getStartDate(date) > this.maxDate));
+	// 	}
 		
-		return outside;
-	},
+	// 	return outside;
+	// },
 	
 	/**
 	 * Handler for a tap on the table header
@@ -585,7 +556,7 @@ Ext.define('IBApp.view.EmptyRoomTable', {
 		el = Ext.fly(el);
 
 		if (el.hasCls(this.getPrevPeriodCls()) || el.hasCls(this.getNextPeriodCls())) {
-			this.refreshDelta(el.hasCls(this.getPrevPeriodCls()) ? -1 : 1);
+			// this.refreshDelta(el.hasCls(this.getPrevPeriodCls()) ? -1 : 1);
 		}
 	},
 
@@ -764,13 +735,13 @@ Ext.define('IBApp.view.EmptyRoomTable', {
 	 * @private
 	 * @param {Date} date
 	 */
-	getDateRecord: function(date){
-		return this.getStore().findBy(function(record){
-			var recordDate = Ext.Date.clearTime(record.get('date'), true).getTime();
+	// getDateRecord: function(date){
+	// 	return this.getStore().findBy(function(record){
+	// 		var recordDate = Ext.Date.clearTime(record.get('date'), true).getTime();
                 
-            return recordDate === Ext.Date.clearTime(date, true).getTime();
-		}, this);
-	},
+ //            return recordDate === Ext.Date.clearTime(date, true).getTime();
+	// 	}, this);
+	// },
 	
 	/**
 	 * Returns the same day
@@ -779,9 +750,9 @@ Ext.define('IBApp.view.EmptyRoomTable', {
 	 * @param {Date} date
 	 * @return {Date}
 	 */
-	getDayStartDate: function(date){
-		return date;
-	},
+	// getDayStartDate: function(date){
+	// 	return date;
+	// },
 	
 	/**
 	 * Returns true if the two dates are the same date (ignores time)
@@ -816,12 +787,12 @@ Ext.define('IBApp.view.EmptyRoomTable', {
 	 * @param {Date} date
 	 * @return {Date}
 	 */
-	getWeekendDate: function(date){
-		var dayOffset = date.getDay() - this.getWeekStart();
-		dayOffset = dayOffset < 0 ? 6 : dayOffset;
+	// getWeekendDate: function(date){
+	// 	var dayOffset = date.getDay() - this.getWeekStart();
+	// 	dayOffset = dayOffset < 0 ? 6 : dayOffset;
 		
-		return new Date(date.getFullYear(), date.getMonth(), date.getDate()+0+dayOffset);
-	},
+	// 	return new Date(date.getFullYear(), date.getMonth(), date.getDate()+0+dayOffset);
+	// },
 
 	/**
 	 * Returns the Date associated with the specified cell
@@ -1030,8 +1001,7 @@ Ext.define('IBApp.view.EmptyRoomTable', {
 					 * @param {Date} date
 					 */
 					getTotalDays: function(date){
-            /* 会议从7:00到22:00 16h * 60m */
-						return 1440 / this.getDayTimeSlotSize();
+						return 960 / this.getDayTimeSlotSize();
 					},
 					
 					/**
@@ -1042,11 +1012,11 @@ Ext.define('IBApp.view.EmptyRoomTable', {
 					 * @return {Date}
 					 */
 					getStartDate: function(date){
-            // var day = date.getDate(),
-            //     month = date.getMonth(),
-            //     year = date.getFullYear();
-            // return new Date(year, month, day,7,0,0);
-						return Ext.Date.clearTime(date, true);
+            var day = date.getDate(),
+                month = date.getMonth(),
+                year = date.getFullYear();
+            return new Date(year, month, day,7,0,0);
+						// return Ext.Date.clearTime(date, true);
 					},
 					
 					/**

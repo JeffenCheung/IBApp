@@ -12,7 +12,6 @@ var storeBuilding = Ext.create("Ext.data.Store", {
         { name: 'buildingId', type: 'string' },
         { name: 'buildingName', type: 'string' },
     ],
-    autoLoad: true,
     data: [
     ]
 });
@@ -113,9 +112,10 @@ Ext.define("IBApp.view.RoomBooking", {
 		/* 会议开始时间 */
         var startDateTime = {
         	xtype: 'datetimepickerfield',
+            id: 'beginTime',
         	name: 'beginTime',
         	label: '开始时间',
-        	value: new Date(),
+        	value: this.getDeltaDate(new Date(), 'minute', 2),
         	dateTimeFormat: 'Y-m-d H:i',
         	picker: {
         		minuteInterval: 15,
@@ -127,9 +127,10 @@ Ext.define("IBApp.view.RoomBooking", {
         /* 会议结束时间 */
         var endDateTime = {
         	xtype: 'datetimepickerfield',
+            id: 'endTime',
         	name: 'endTime',
         	label: '结束时间',
-        	value: new Date(),
+            value: this.getDeltaDate(new Date(), 'minute', 17),
         	dateTimeFormat: 'Y-m-d H:i',
         	picker: {
         		minuteInterval: 15,
@@ -177,7 +178,7 @@ Ext.define("IBApp.view.RoomBooking", {
         var roomTable = new Ext.create('IBApp.view.EmptyRoomTable', {
             id: 'roomInfoTable',
             value: new Date(),
-            height: 1000,
+            height: 680,
         });
 
         var panelPages = Ext.create('Ext.Panel', {
@@ -218,7 +219,7 @@ Ext.define("IBApp.view.RoomBooking", {
                             handler: this.onSubmitButtonTap,
                             scope: this
                         }
-                    ]
+                    ],
                 },
                 {
                     xtype: 'panel',
@@ -230,13 +231,14 @@ Ext.define("IBApp.view.RoomBooking", {
                             xtype: 'panel',
                             margin: '10 0 10 10',
                             layout: 'hbox',
+                            docked: 'top',
                             items: [
                                 buildingSelector,
                                 floorSelector,
                                 checkRoomDate,
                                 {
                                     xtype: 'button',
-                                    text: '确定',
+                                    text: '查看',
                                     handler: this.onCheckRoomBtnTap,
                                     scope: this
                                 }
@@ -245,7 +247,8 @@ Ext.define("IBApp.view.RoomBooking", {
                         roomTable,
                         {
                             xtype: 'button',
-                            text: '确定',
+                            text: '预定',
+                            docked: 'bottom',
                             handler: this.onEmptyRoomSubmitTap,
                             scope: this
                         }
@@ -260,6 +263,19 @@ Ext.define("IBApp.view.RoomBooking", {
         ]);
 
         panelPages.setActiveItem(0);
+    },
+
+    updateView: function() {
+        var me = this;
+        var userId = Ext.getStore("UserInfo").getAt(0).get('userId');
+        this.updateMeetingTypeSelector(userId);
+        this.updateMeetingTime();
+
+        this.updateBuildingSelector();
+        var task = Ext.create('Ext.util.DelayedTask', function() {
+            me.onCheckRoomBtnTap();
+        });
+        task.delay(500);
     },
 
     onBackButtonTap: function() {
@@ -281,6 +297,11 @@ Ext.define("IBApp.view.RoomBooking", {
             }
         }
         this.fireEvent('roomSearchSubmitCommand', this, formValuesObj);
+    },
+
+    updateMeetingTime: function() {
+        this.down('#beginTime').setValue(this.getDeltaDate(new Date(), 'minute', 2));
+        this.down('#endTime').setValue(this.getDeltaDate(new Date(), 'minute', 17));
     },
 
     updateMeetingTypeSelector: function(userId) {
@@ -341,6 +362,10 @@ Ext.define("IBApp.view.RoomBooking", {
         Ext.Msg.alert(message);
     },
 
+    updateBuildingSelector: function() {
+        storeBuilding.load();
+    },
+
     onBuildingChange: function(selector, newValue, oldValue, eOpts) {
         var URLServer = Ext.getStore("UrlAddr").getAt(0).get('urlServer');
         var urltmp = URLServer + '/baFloor/floorList/';
@@ -355,8 +380,8 @@ Ext.define("IBApp.view.RoomBooking", {
         var day = date.getDate(),
             month = date.getMonth(),
             year = date.getFullYear();
-        var beginTime = new Date(year, month, day,0,0,0);
-        var endTime = new Date(year, month, day,23,59,59);
+        var beginTime = new Date(year, month, day,7,0,0);
+        var endTime = new Date(year, month, day,23,0,0);
         
         this.fireEvent('checkRoomBtnTapCommand', userId, floorId, beginTime, endTime);
     },
@@ -390,9 +415,20 @@ Ext.define("IBApp.view.RoomBooking", {
         else {
             console.log(obj);
             var roomId = obj.roomId;
-            var beginTime = obj.begin;
-            var endTime = new Date(obj.end.getFullYear(), obj.end.getMonth(), obj.end.getDate(), obj.end.getHours(), obj.end.getMinutes() + 30);
+            var beginTime = this.getDeltaDate(obj.begin, 'second', 1);
+            var endTime = this.getDeltaDate(obj.end, 'minute', 30);
             this.fireEvent('emptyRoomSubmitCommand', roomId, beginTime, endTime);
         }
+    },
+
+    getDeltaDate: function(date, flag, delta){
+        if (flag == 'minute') {
+            return new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes() + delta);
+        }
+        else if (flag == 'second') {
+            return new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds() + delta);
+        }
+
+        return date;
     },
 });

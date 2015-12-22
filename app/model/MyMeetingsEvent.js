@@ -60,6 +60,14 @@ Ext.define("IBApp.model.MyMeetingsEvent", {
 			name: 'mtContent',
 			type: 'string'
 		},
+		{
+			name: 'replyNum',
+			type: 'string'
+		},
+		{
+			name: 'attenderNum',
+			type: 'string'
+		},
 		]
 
 	}

@@ -18,7 +18,7 @@ Ext.define('IBApp.view.UserInfoList', {
 		store: 'UserInfo',
 		itemTpl: userInfoTemplate,
 		disableSelection: true,
-		onItemDisclosure: true,
+		// onItemDisclosure: true,
 		scrollable: {
             disabled: true
         },

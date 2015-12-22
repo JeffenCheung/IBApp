@@ -40,9 +40,9 @@ Ext.define('IBApp.view.MeetingRequest', {
             ui:'action',
             id:'edit',
             handler:function(){
-                var Role = Ext.getStore("UserInfo").getAt(0).get('userRoles');              
+                var Role = Ext.getStore("UserInfo").getAt(0).get('userId');              
                 console.log(Role);
-                if (Role.indexOf('APP_ADMIN') != -1)
+                if (Role == mtObj.organizerId)
                 {
                   var items = [
                   {
@@ -455,6 +455,16 @@ Ext.define('IBApp.view.MeetingRequest', {
         {
             strEn = 'waiting';
             str = '未开始';
+
+            var now = new Date().getTime();
+            console.log(details.start);
+            var startDate = new Date(details.mtBeginTime).getTime();
+                        
+            if( startDate <= now )
+            {
+                strEn = 'begining';
+                str = '进行中';
+            }
         }
         if(details.mtFlag == 3)
         {

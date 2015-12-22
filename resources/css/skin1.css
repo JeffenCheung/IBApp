@@ -19,7 +19,7 @@
 /* line 43, ../scss/skin1.scss */
 .touch-calendar-view table.day tr.half-hour td.time-block,
 .touch-calendar-view table.day tr.half-hour td.time-block-room {
-  border-top: 1px solid #efefef;
+  /*border-top: 1px solid #efefef;*/
 }
 /* line 49, ../scss/skin1.scss */
 .touch-calendar-view table.day tr td {

@@ -100,6 +100,12 @@
             padding-left:10px;
             line-height:300%;
         }
+        .list-item-narrative-reply
+        {
+            color:#666666;
+            font-size:80%;
+            padding-left:10px;
+        }
         .meeting-status {
             color: white;
             border-radius: 3px;
@@ -117,23 +123,19 @@
         }
         /*mtFlag:1-正在审核；2-未开始；3-已结束；4-已取消；5-草稿；6-删除；*/
         .checking {
-            background-color: #CDCDB4;
+            background-color: #DC143C;
         }
         .waiting {
             background-color: #4876FF;
         }
-        .closed {
-            background-color: #EE2C2C;
+        .begining {
+            background-color: #00FF00;
         }
-        .canceled {
-            background-color: #32CD32;
+        .closed,.canceled,.draft,.deleted
+         {
+            background-color: #D3D3D3;
         }
-        .draft {
-            background-color: #32CD32;
-        }
-        .deleted {
-            background-color: #32CD32;
-        }
+       
 
         .participatorIcon {
             background: url(./resources/images/edit.png) no-repeat;

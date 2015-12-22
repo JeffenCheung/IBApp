@@ -109,7 +109,8 @@ Ext.define('IBApp.view.DeviceControlSimple', {
     					var sceneSelector = Ext.create('Ext.field.Select', {
 				            itemId: dataArray[j].get('controlId').replace('I', ''),
 				            options: [
-				                {type: '进入模式',  id: '1'},
+                                {type: '进入模式',  id: '1'},
+				                {type: '照明模式',  id: '3'},
 				                {type: '离开模式', id: '2'},
 				            ],
 				            valueField: 'id',

@@ -188,7 +188,7 @@ Ext.define('IBApp.view.MainMenu', {
 			var funcIcon5 = Ext.create('IBApp.view.FuncIcon', {
 				imageId: 'meetingRoomManage',
 				imageSrc: './resources/icons/room_manage.png',
-				text: '会议室管理',
+				text: '会议统计',
 			});
 			var funcIcon6 = Ext.create('IBApp.view.FuncIcon', {
 				imageId: 'serverList',
