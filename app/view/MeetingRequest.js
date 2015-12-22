@@ -42,6 +42,7 @@ Ext.define('IBApp.view.MeetingRequest', {
             handler:function(){
                 var Role = Ext.getStore("UserInfo").getAt(0).get('userId');              
                 console.log(Role);
+                console.log(mtObj.organizerId);
                 if (Role == mtObj.organizerId)
                 {
                   var items = [
@@ -294,19 +295,30 @@ Ext.define('IBApp.view.MeetingRequest', {
     },
 
     onEditButtonTap:function(){
-        var me = this;
-        var MeetingNT = me.down('#meetingNameTextid');
-        var organizerNT = me.down('#organizerNameTextid');
-        var participatorMB = me.down('#participatorModifyBtn');
-        var requestB = me.down('#requestBottonid');
-        var meetingT = me.down('#meetingTextid');
+        if((3 == mtObj.mtFlag)  || (5 == mtObj.mtFlag) || (6 == mtObj.mtFlag))
+        {
+            Ext.Msg.alert('会议已结束！');
+        }
+        else if (4 == mtObj.mtFlag)
+        {
+            Ext.Msg.alert('会议已取消！');
+        }
+        else
+        {
+          var me = this;
+          var MeetingNT = me.down('#meetingNameTextid');
+          var organizerNT = me.down('#organizerNameTextid');
+          var participatorMB = me.down('#participatorModifyBtn');
+          var requestB = me.down('#requestBottonid');
+          var meetingT = me.down('#meetingTextid');
 
-        MeetingNT.setReadOnly(false);
-        participatorMB.setHidden(false);
-        requestB.setHidden(false);
-        meetingT.setReadOnly(false);
-
+          MeetingNT.setReadOnly(false);
+          participatorMB.setHidden(false);
+          requestB.setHidden(false);
+          meetingT.setReadOnly(false);
+        }
         this.actions.hide(); 
+       
 
     },
 
@@ -357,62 +369,74 @@ Ext.define('IBApp.view.MeetingRequest', {
 
     onReplyTap: function() {
           var me = this;
-          Ext.Msg.show({
-            title: '参会回复',
-            buttons: [
-              {
-                text: '参会',
-                ui: 'action'
-              }, 
-              {
-                text: '不参会',
-                ui: 'action'
-              },
-              {
-                text: '未定',
-                ui: 'action'
-              },
-              {
-                text: '取消',
-                itemId: 'cancel'
-              } 
-            ],
-            fn: function(button) {
-              var mtReplyObj = new Object();
-              if (button == '取消')
-              {
-                me.actions.hide();
-              }
-              if (button == '参会') {
-                mtReplyObj.replyResult = 1;
-                mtReplyObj.replyerId = Ext.getStore("UserInfo").getAt(0).get('userId');
-                mtReplyObj.replyerFlag = 1; //回复人标识 1.内部人员2.外部人员 
-                mtReplyObj.replyDate =Ext.JSON.encodeDate(new Date());//回复日期
-                mtReplyObj.meetingId = mtObj.mtId;//会议ID
-                mtReplyObj.replyMethod = 1; //回复方式1.手机APP 2.网页 3.短信 
-                me.fireEvent("mtReplyCommand", mtReplyObj);
-              };
-              if (button == '不参会') {
-                mtReplyObj.replyResult = 2;
-                mtReplyObj.replyerId = Ext.getStore("UserInfo").getAt(0).get('userId');
-                mtReplyObj.replyerFlag = 1; //回复人标识 1.内部人员2.外部人员 
-                mtReplyObj.replyDate =Ext.JSON.encodeDate(new Date());//回复日期
-                mtReplyObj.meetingId = mtObj.mtId;//会议ID
-                mtReplyObj.replyMethod = 1; //回复方式1.手机APP 2.网页 3.短信 
-                me.fireEvent("mtReplyCommand", mtReplyObj);
-              };
-              if (button == '未定') {
-                mtReplyObj.replyResult = 3;  
-                mtReplyObj.replyerId = Ext.getStore("UserInfo").getAt(0).get('userId');
-                mtReplyObj.replyerFlag = 1; //回复人标识 1.内部人员2.外部人员 
-                mtReplyObj.replyDate =Ext.JSON.encodeDate(new Date());//回复日期
-                mtReplyObj.meetingId = mtObj.mtId;//会议ID
-                mtReplyObj.replyMethod = 1; //回复方式1.手机APP 2.网页 3.短信 
-                me.fireEvent("mtReplyCommand", mtReplyObj);
-              };
+          if((3 == mtObj.mtFlag)  || (5 == mtObj.mtFlag) || (6 == mtObj.mtFlag))
+          {
+              Ext.Msg.alert('会议已结束！');
+          }
+          else if (4 == mtObj.mtFlag)
+          {
+              Ext.Msg.alert('会议已取消！');
+          }
+          else
+          {
+            Ext.Msg.show({
+              title: '参会回复',
+              buttons: [
+                {
+                  text: '参会',
+                  ui: 'action'
+                }, 
+                {
+                  text: '不参会',
+                  ui: 'action'
+                },
+                {
+                  text: '未定',
+                  ui: 'action'
+                },
+                {
+                  text: '取消',
+                  itemId: 'cancel'
+                } 
+              ],
+              fn: function(button) {
+                var mtReplyObj = new Object();
+                if (button == '取消')
+                {
+                  me.actions.hide();
+                }
+                if (button == '参会') {
+                  mtReplyObj.replyResult = 1;
+                  mtReplyObj.replyerId = Ext.getStore("UserInfo").getAt(0).get('userId');
+                  mtReplyObj.replyerFlag = 1; //回复人标识 1.内部人员2.外部人员 
+                  mtReplyObj.replyDate =Ext.JSON.encodeDate(new Date());//回复日期
+                  mtReplyObj.meetingId = mtObj.mtId;//会议ID
+                  mtReplyObj.replyMethod = 1; //回复方式1.手机APP 2.网页 3.短信 
+                  me.fireEvent("mtReplyCommand", mtReplyObj);
+                };
+                if (button == '不参会') {
+                  mtReplyObj.replyResult = 2;
+                  mtReplyObj.replyerId = Ext.getStore("UserInfo").getAt(0).get('userId');
+                  mtReplyObj.replyerFlag = 1; //回复人标识 1.内部人员2.外部人员 
+                  mtReplyObj.replyDate =Ext.JSON.encodeDate(new Date());//回复日期
+                  mtReplyObj.meetingId = mtObj.mtId;//会议ID
+                  mtReplyObj.replyMethod = 1; //回复方式1.手机APP 2.网页 3.短信 
+                  me.fireEvent("mtReplyCommand", mtReplyObj);
+                };
+                if (button == '未定') {
+                  mtReplyObj.replyResult = 3;  
+                  mtReplyObj.replyerId = Ext.getStore("UserInfo").getAt(0).get('userId');
+                  mtReplyObj.replyerFlag = 1; //回复人标识 1.内部人员2.外部人员 
+                  mtReplyObj.replyDate =Ext.JSON.encodeDate(new Date());//回复日期
+                  mtReplyObj.meetingId = mtObj.mtId;//会议ID
+                  mtReplyObj.replyMethod = 1; //回复方式1.手机APP 2.网页 3.短信 
+                  me.fireEvent("mtReplyCommand", mtReplyObj);
+                };
               
-            }
-          });
+                
+              }
+            });
+          }
           me.actions.hide();
       },
 
@@ -422,6 +446,7 @@ Ext.define('IBApp.view.MeetingRequest', {
       
       mtCancelobj.changeFlag = 1;
       mtCancelobj.mtId = mtObj.mtId;
+      mtCancelobj.mtFlag = mtObj.mtFlag;
       this.fireEvent("mtCancelCommand", mtCancelobj);
       me.actions.hide(); 
     },
@@ -432,6 +457,7 @@ Ext.define('IBApp.view.MeetingRequest', {
       
       mtCancelobj.changeFlag = 4;  //更改标识 1.取消会议2.推迟会议3.延长会议4.结束会议5.基本变更
       mtCancelobj.mtId = mtObj.mtId;  
+      mtCancelobj.mtFlag = mtObj.mtFlag;
       this.fireEvent("mtCancelCommand", mtCancelobj);
       me.actions.hide(); 
     },
