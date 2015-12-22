@@ -212,30 +212,42 @@ Ext.define("IBApp.controller.MyMeetings", {
     },
 
     onMeetingRequestModifyDetailsCommand: function(modifiedMtDetails) {
-        var paramsJson = Ext.JSON.encode(modifiedMtDetails);
-        var URLServer = Ext.getStore("UrlAddr").getAt(0).get('urlServer');
-        var urlUpdateMeeting = URLServer + '/meeting/updateMeeting/';
-        Ext.Ajax.request({
-            url: urlUpdateMeeting,
-            method: 'POST',
-            disableCaching: false,
-            params: paramsJson,
-            success: function (response) {
-                var ret = Ext.JSON.decode(response.responseText);
-                if(ret.resultFlag == 1) {
-                    Ext.Msg.alert('会议修改成功！');
+        if((3 == modifiedMtDetails.mtFlag)  || (5 == modifiedMtDetails.mtFlag) || (6 == modifiedMtDetails.mtFlag))
+        {
+            Ext.Msg.alert('会议已结束！');
+        }
+        else if (4 == modifiedMtDetails.mtFlag)
+        {
+            Ext.Msg.alert('会议已取消！');
+        }
+        else
+        {
+            var paramsJson = Ext.JSON.encode(modifiedMtDetails);
+            var URLServer = Ext.getStore("UrlAddr").getAt(0).get('urlServer');
+            var urlUpdateMeeting = URLServer + '/meeting/updateMeeting/';
+
+            Ext.Ajax.request({
+                url: urlUpdateMeeting,
+                method: 'POST',
+                disableCaching: false,
+                params: paramsJson,
+                success: function (response) {
+                    var ret = Ext.JSON.decode(response.responseText);
+                    if(ret.resultFlag == 1) {
+                        Ext.Msg.alert('会议修改成功！');
+                    }
+                    else if(ret.resultFlag == 2) {
+                        Ext.Msg.alert('修改有冲突');
+                    }
+                    else if(ret.resultFlag == 0) {
+                        Ext.Msg.alert('修改失败');
+                    }
+                },
+                failure: function (response) {
+                    Ext.Msg.alert('访问失败');
                 }
-                else if(ret.resultFlag == 2) {
-                    Ext.Msg.alert('修改有冲突');
-                }
-                else if(ret.resultFlag == 0) {
-                    Ext.Msg.alert('修改失败');
-                }
-            },
-            failure: function (response) {
-                Ext.Msg.alert('访问失败');
-            }
-        });
+            });
+        }
     },
 
     onRoomListTapCommand: function(record) {
@@ -426,6 +438,7 @@ Ext.define("IBApp.controller.MyMeetings", {
         var paramsJson = Ext.JSON.encode(mtReplyObj);
         console.log('paramsJson');
         console.log(paramsJson);
+       
         // var urlReplyMeeting = 'http://10.2.49.250:8080/mtservice/restService/0.1/reply/addReply';
         var URLServer = Ext.getStore("UrlAddr").getAt(0).get('urlServer');
         var urlReplyMeeting = URLServer + '/reply/addReply/';
@@ -451,52 +464,65 @@ Ext.define("IBApp.controller.MyMeetings", {
                 Ext.Msg.alert('回复网络连接失败');
             }
         });
+        
     },
 
     onMtCancelCommand:function(mtCancelobj) {
         var paramsJson = Ext.JSON.encode(mtCancelobj);
         console.log('paramsJson');
         console.log(paramsJson);
-        // var urlCancelMeeting = 'http://10.2.49.250:8080/mtservice/restService/0.1/meeting/quickUpdateMeeting';
-        var URLServer = Ext.getStore("UrlAddr").getAt(0).get('urlServer');
-        var urlCancelMeeting = URLServer + '/meeting/quickUpdateMeeting/';
-        Ext.Ajax.request({
-            url: urlCancelMeeting,
-            method: 'POST',
-            disableCaching: false,
-            params: paramsJson,
-            success: function (response) {
-                var ret = Ext.JSON.decode(response.responseText);
+        if((3 == mtCancelobj.mtFlag)  || (5 == mtCancelobj.mtFlag) || (6 == mtCancelobj.mtFlag))
+        {
+            Ext.Msg.alert('会议已结束！');
+        }
+        else if (4 == mtCancelobj.mtFlag)
+        {
+            Ext.Msg.alert('会议已取消！');
+        }
+        else
+        {
+            // var urlCancelMeeting = 'http://10.2.49.250:8080/mtservice/restService/0.1/meeting/quickUpdateMeeting';
+            var URLServer = Ext.getStore("UrlAddr").getAt(0).get('urlServer');
+            var urlCancelMeeting = URLServer + '/meeting/quickUpdateMeeting/';
+            Ext.Ajax.request({
+                url: urlCancelMeeting,
+                method: 'POST',
+                disableCaching: false,
+                params: paramsJson,
+                success: function (response) {
+                    var ret = Ext.JSON.decode(response.responseText);
 
-                  console.log('ret');
-                  console.log(ret);
-                if(ret.resultFlag == 1) {
-                    if(mtCancelobj.changeFlag == 1)
-                    {
-                        Ext.Msg.alert('会议取消成功！');
+                      console.log('ret');
+                      console.log(ret);
+                    if(ret.resultFlag == 1) {
+                        if(mtCancelobj.changeFlag == 1)
+                        {
+                            Ext.Msg.alert('会议取消成功！');
+                        }
+                        else if (mtCancelobj.changeFlag == 4)
+                        {
+                            Ext.Msg.alert('会议结束成功！');
+                        }
                     }
-                    else if (mtCancelobj.changeFlag == 4)
+                    else
                     {
-                        Ext.Msg.alert('会议结束成功！');
+                        if(mtCancelobj.changeFlag == 1)
+                        {
+                            Ext.Msg.alert('会议取消失败！');
+                        }
+                        else if (mtCancelobj.changeFlag == 4)
+                        {
+                            Ext.Msg.alert('会议结束失败！');
+                        }
+                               
                     }
+                },
+                failure: function (response) {
+                    Ext.Msg.alert('取消网络连接失败');
                 }
-                else
-                {
-                    if(mtCancelobj.changeFlag == 1)
-                    {
-                        Ext.Msg.alert('会议取消失败！');
-                    }
-                    else if (mtCancelobj.changeFlag == 4)
-                    {
-                        Ext.Msg.alert('会议结束失败！');
-                    }
-                           
-                }
-            },
-            failure: function (response) {
-                Ext.Msg.alert('取消网络连接失败');
-            }
-        });
+            });  
+        }
+
     }
 
 });
