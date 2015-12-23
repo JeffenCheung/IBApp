@@ -46,12 +46,16 @@ Ext.define('IBApp.view.RoomBookSuccess', {
                         value: '无',
                     },                    
                     {
+                        xtype: 'textareafield',
                         itemId: 'mtTime',
                         label: '时间',
+                        height: '3.5em',
                     },                    
                     {
+                        xtype: 'textareafield',
                         itemId: 'mtLocation',
                         label: '地点',
+                        height: '3.5em',
                     },
                     {
                         itemId: 'mtOrganizer',
@@ -63,8 +67,10 @@ Ext.define('IBApp.view.RoomBookSuccess', {
                         value: '无',
                     },
                     {
+                        xtype: 'textareafield',
                         itemId: 'mtServices',
                         label: '服务',
+                        height: '3.5em',
                         value: '无',
                     },
                     {

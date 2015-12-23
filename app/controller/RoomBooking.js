@@ -92,9 +92,9 @@ Ext.define("IBApp.controller.RoomBooking", {
             me.getRoomBookingView().showMessages('需要填写与会人数');
             return;
         }
-
-        if (obj.beginTime >= obj.endTime) {
-            me.getRoomBookingView().showMessages('会议结束时间需大于开始时间');
+        
+        if ( (obj.beginTime <= new Date()) || (obj.beginTime >= obj.endTime) ) {
+            me.getRoomBookingView().showMessages('会议时间不合理');
             return;
         }
 
@@ -256,6 +256,12 @@ Ext.define("IBApp.controller.RoomBooking", {
         paramsObj.operateFlag = 1;//操作标识 1-手机APP；2-网页 
         var paramsJson = Ext.JSON.encode(paramsObj);
         console.log(paramsJson);
+
+        me.getRoomBookSuccessView().setMasked({
+            xtype: 'loadmask',
+            message: '正在加载中...'
+        });
+
         var URLServer = Ext.getStore("UrlAddr").getAt(0).get('urlServer');
         var urlAddMeeting = URLServer + '/meeting/addMeeting/' ;
         Ext.Ajax.request({
@@ -264,6 +270,7 @@ Ext.define("IBApp.controller.RoomBooking", {
             disableCaching: false,
             params: paramsJson,
             success: function (response) {
+                me.getRoomBookSuccessView().setMasked(false);
                 var ret = Ext.JSON.decode(response.responseText);
                 if (ret.resultFlag == 0) {
                     me.getRoomSearchResultView().showMessages('申报会议失败');
@@ -277,6 +284,7 @@ Ext.define("IBApp.controller.RoomBooking", {
                 };
             },
             failure: function (response) {
+                me.getRoomBookSuccessView().setMasked(false);
                 me.getRoomSearchResultView().showMessages('访问服务失败');
             }
         });

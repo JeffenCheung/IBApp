@@ -76,29 +76,38 @@ Ext.define('IBApp.view.RoomSearchResult', {
     showRoomList: function(meetingObj, recommendRoomsArray) {
         obj = meetingObj;
 
+        var roomBookButton = this.down('#roomBookButton');
         var roomListFieldset = this.down('#roomListFieldset');
-        recommendRoomsNumber = recommendRoomsArray.length;
-
-        roomListFieldset.setTitle('成功为您找到<span style="color:blue;font-size:1.5em">'+recommendRoomsNumber+'</span>个会议室，快点抢占吧~');
         roomListFieldset.removeAll();
 
-        for (var i=0; i < recommendRoomsNumber; i++) {
-            var room = Ext.create('Ext.field.Radio', {
-                name: 'roomIds',
-                itemId: 'room'+i,
-                labelWrap: true,
-                labelWidth: '80%',
-                label: [
-                    '<div class="list-item-title">'+recommendRoomsArray[i].roomName+'&nbsp;</div>',
-                    '<div class="list-item-narrative">'+recommendRoomsArray[i].building+'&nbsp;>&nbsp;'+recommendRoomsArray[i].floorName+'&nbsp;>&nbsp;'+recommendRoomsArray[i].roomNum+'&nbsp;&nbsp;&nbsp;&nbsp;容量:'+recommendRoomsArray[i].roomMaxSize+'</div>',
-                ].join(''),
-                value: recommendRoomsArray[i].roomId
-            });
-            if(i==0) {
-                room.check();
+        recommendRoomsNumber = recommendRoomsArray.length;
+
+        if (recommendRoomsNumber == 0) {
+            roomListFieldset.setTitle('对不起，没有找到合适的会议室');
+            roomBookButton.setHidden(true);
+        }
+        else {
+            roomListFieldset.setTitle('成功为您找到<span style="color:blue;font-size:1.5em">'+recommendRoomsNumber+'</span>个会议室，快点抢占吧~');
+            for (var i=0; i < recommendRoomsNumber; i++) {
+                var room = Ext.create('Ext.field.Radio', {
+                    name: 'roomIds',
+                    itemId: 'room'+i,
+                    labelWrap: true,
+                    labelWidth: '80%',
+                    label: [
+                        '<div class="list-item-title">'+recommendRoomsArray[i].roomName+'&nbsp;</div>',
+                        '<div class="list-item-narrative">'+recommendRoomsArray[i].building+'&nbsp;>&nbsp;'+recommendRoomsArray[i].floorName+'&nbsp;>&nbsp;'+recommendRoomsArray[i].roomNum+'&nbsp;&nbsp;&nbsp;&nbsp;容量:'+recommendRoomsArray[i].roomMaxSize+'</div>',
+                    ].join(''),
+                    value: recommendRoomsArray[i].roomId
+                });
+                if(i==0) {
+                    room.check();
+                }
+
+                roomListFieldset.add(room);
             }
 
-            roomListFieldset.add(room);
+            roomBookButton.setHidden(false);
         }
     },
 

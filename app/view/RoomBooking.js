@@ -66,16 +66,19 @@ Ext.define("IBApp.view.RoomBooking", {
                 }
             ],
             listeners: {
-                toggle: function(container, button, pressed){
-                   // alert("User toggled the '" + button.getText() + "' button: " + (pressed ? 'on' : 'off'));
-                    if ((button.getText() == '快速推荐') && pressed) {
-                        panelPages.setActiveItem(0);
-                    }
-                    else if ((button.getText() == '查看空闲') && pressed) {
-                        panelPages.setActiveItem(1);
-                    }
-               }
-           }
+                toggle: { 
+                    fn: function(container, button, pressed) {
+                        if ((button.getText() == '快速推荐') && pressed) {
+                            panelPages.setActiveItem(0);
+                        }
+                        else if ((button.getText() == '查看空闲') && pressed) {
+                            this.onCheckRoomBtnTap();
+                            panelPages.setActiveItem(1);
+                        }
+                    },
+                    scope: this
+                }
+            }
         });
 
         var topToolbar = {
@@ -187,6 +190,7 @@ Ext.define("IBApp.view.RoomBooking", {
                 animation: 'fade',
             },
             flex: 1,
+            id: 'panelPages',
             items: [
                 {
                     xtype: 'formpanel',
@@ -223,6 +227,7 @@ Ext.define("IBApp.view.RoomBooking", {
                 },
                 {
                     xtype: 'panel',
+                    id: 'roomInfoPanel',
                     layout: 'vbox',
                     scrollable: 'vertical',
                     directionLock: true,
@@ -272,10 +277,12 @@ Ext.define("IBApp.view.RoomBooking", {
         this.updateMeetingTime();
 
         this.updateBuildingSelector();
-        var task = Ext.create('Ext.util.DelayedTask', function() {
-            me.onCheckRoomBtnTap();
-        });
-        task.delay(500);
+        if ( this.down('#panelPages').getActiveItem().id == 'roomInfoPanel') {
+            var task = Ext.create('Ext.util.DelayedTask', function() {
+                me.onCheckRoomBtnTap();
+            });
+            task.delay(500);
+        };
     },
 
     onBackButtonTap: function() {
@@ -411,6 +418,9 @@ Ext.define("IBApp.view.RoomBooking", {
         var obj = this.down('#roomInfoTable').getSelectionInfo();
         if (obj == null) {
             Ext.Msg.alert('请选择会议室');
+        }
+        else if (obj.begin <= new Date()) {
+            Ext.Msg.alert('会议时间已过时');
         }
         else {
             console.log(obj);
