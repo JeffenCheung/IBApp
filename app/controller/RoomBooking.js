@@ -92,9 +92,9 @@ Ext.define("IBApp.controller.RoomBooking", {
             me.getRoomBookingView().showMessages('需要填写与会人数');
             return;
         }
-
-        if (obj.beginTime >= obj.endTime) {
-            me.getRoomBookingView().showMessages('会议结束时间需大于开始时间');
+        
+        if ( (obj.beginTime <= new Date()) || (obj.beginTime >= obj.endTime) ) {
+            me.getRoomBookingView().showMessages('会议时间不合理');
             return;
         }
 

@@ -412,6 +412,9 @@ Ext.define("IBApp.view.RoomBooking", {
         if (obj == null) {
             Ext.Msg.alert('请选择会议室');
         }
+        else if (obj.begin <= new Date()) {
+            Ext.Msg.alert('会议时间已过时');
+        }
         else {
             console.log(obj);
             var roomId = obj.roomId;
