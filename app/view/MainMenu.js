@@ -13,22 +13,23 @@ Ext.define('IBApp.view.MainMenu', {
 			{
 				xtype: 'titlebar',
 				docked: 'top',
-				title: '智能楼宇系统',
+				title: '',
+				style: 'display:none',
+			},
+			{
+				xtype: 'userinfolist',
+				itemId: 'profile',
+				height: 160,
+				itemHeight: 120,
 				items: [
 					{
 						xtype: 'button',
 						itemId: 'LogoutButton',
 						text: '退出',
 						align: 'right',
-						// style: 'background-image: url(resources/images/qr_scanner.png); background-size: auto 100%; background-repeat:no-repeat;'
+						style: 'background: none;border: 0px;width: 20%;left: 80%;top: 7px;'
 					}
-				]
-			},
-			{
-				xtype: 'userinfolist',
-				itemId: 'profile',
-				height: 120,
-				itemHeight: 120,
+				],
 				style: 'border-bottom: 1px solid #f0f0f0',
 			},
 			{
@@ -156,8 +157,10 @@ Ext.define('IBApp.view.MainMenu', {
 	setFunctionIcon: function(userRoles) {
 		var rowPanel1 = this.down('#rowPanel1');
 		var rowPanel2 = this.down('#rowPanel2');
+		var rowPanel3 = this.down('#rowPanel3');
 		rowPanel1.removeAll();
 		rowPanel2.removeAll();
+		rowPanel3.removeAll();
 
 		if (userRoles.indexOf('APP_ADMIN') != -1) {
 			/* 系统管理员权限 可使用所有功能模块 */
@@ -170,21 +173,22 @@ Ext.define('IBApp.view.MainMenu', {
 				imageId: 'roomBooking',
 				imageSrc: './resources/icons/book_room.png',
 				text: '预定会议室',
-			});
+			});			
+			rowPanel1.add(funcIcon1);
+			rowPanel1.add(funcIcon2);
 			var funcIcon3 = Ext.create('IBApp.view.FuncIcon', {
 				imageId: 'scanningCode',
 				imageSrc: './resources/icons/scan_code.png',
 				text: '扫码签到',
 			});
-			rowPanel1.add(funcIcon1);
-			rowPanel1.add(funcIcon2);
-			rowPanel1.add(funcIcon3);
-
 			var funcIcon4 = Ext.create('IBApp.view.FuncIcon', {
 				imageId: 'deviceControl',
 				imageSrc: './resources/icons/device_control.png',
 				text: '设备控制',
 			});
+			rowPanel2.add(funcIcon3);
+			rowPanel2.add(funcIcon4);
+			
 			var funcIcon5 = Ext.create('IBApp.view.FuncIcon', {
 				imageId: 'meetingRoomManage',
 				imageSrc: './resources/icons/room_manage.png',
@@ -194,10 +198,9 @@ Ext.define('IBApp.view.MainMenu', {
 				imageId: 'serverList',
 				imageSrc: './resources/icons/server_list.png',
 				text: '服务任务',
-			});
-			rowPanel2.add(funcIcon4);
-			rowPanel2.add(funcIcon5);
-			rowPanel2.add(funcIcon6);
+			});			
+			rowPanel3.add(funcIcon5);
+			rowPanel3.add(funcIcon6);
 		}
 		else if (userRoles.indexOf('APP_USER') != -1) {
 			var funcIcon1 = Ext.create('IBApp.view.FuncIcon', {
@@ -217,7 +220,7 @@ Ext.define('IBApp.view.MainMenu', {
 			});
 			rowPanel1.add(funcIcon1);
 			rowPanel1.add(funcIcon2);
-			rowPanel1.add(funcIcon3);
+			rowPanel2.add(funcIcon3);
 		};
 	},
 

@@ -18,13 +18,13 @@ Ext.define('IBApp.view.FuncIcon', {
 	    var image = Ext.create('Ext.Img', {
 	    	itemId: this.config.imageId,
 	    	src: this.config.imageSrc,
-	    	style: 'width:100%;height:70%;margin:auto',
+	    	style: 'position: absolute;width:50%;height:35%;bottom: 15px;right: 5px;',
 	    });
 
 	    this.add([
         	image,
         ]);
-	    this.setHtml(['<p style="text-align:center">',
+	    this.setHtml(['<p style="text-align:left">',
 	    	          this.config.text,
 	    	          '</p>'].join(""));
 	},
