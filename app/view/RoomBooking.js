@@ -123,7 +123,9 @@ Ext.define("IBApp.view.RoomBooking", {
         	picker: {
         		minuteInterval: 15,
         		ampm: false,
-        		slotOrder: ['year','month','day','hour','minute']
+        		slotOrder: ['year','month','day','hour','minute'],
+                yearFrom: (new Date).getFullYear() - 2,
+                yearTo: (new Date).getFullYear() + 2,
         	}
         };
 
@@ -138,7 +140,9 @@ Ext.define("IBApp.view.RoomBooking", {
         	picker: {
         		minuteInterval: 15,
         		ampm: false,
-        		slotOrder: ['year','month','day','hour','minute']
+        		slotOrder: ['year','month','day','hour','minute'],
+                yearFrom: (new Date).getFullYear() - 2,
+                yearTo: (new Date).getFullYear() + 2,
         	}
         };
 
@@ -176,6 +180,11 @@ Ext.define("IBApp.view.RoomBooking", {
             width: 100,
             value: new Date(),
             dateFormat: 'Y-m-d',
+            picker: {
+                slotOrder: ['year','month','day'],
+                yearFrom: (new Date).getFullYear() - 2,
+                yearTo: (new Date).getFullYear() + 2,
+            }
         });
 
         var roomTable = new Ext.create('IBApp.view.EmptyRoomTable', {
