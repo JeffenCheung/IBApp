@@ -41,11 +41,10 @@ Ext.define('IBApp.view.MeetingRequest', {
             id:'edit',
             handler:function(){
                 var Role = Ext.getStore("UserInfo").getAt(0).get('userId');              
-                console.log(Role);
-                console.log(mtObj.organizerId);
+                var items = [];
                 if (Role == mtObj.organizerId)
                 {
-                  var items = [
+                  items = [
                   {
                       text:'回复',
                       // ui:'decline',
@@ -81,7 +80,7 @@ Ext.define('IBApp.view.MeetingRequest', {
                 }
                 else
                 {
-                  var items = [
+                  items = [
                   {
                       text:'回复',
                       ui:'decline',
@@ -102,6 +101,9 @@ Ext.define('IBApp.view.MeetingRequest', {
                     this.actions = Ext.create('Ext.ActionSheet',{
                        items:items  
                    });
+               }
+               else {
+                this.actions.setItems(items);
                }
                Ext.Viewport.add(this.actions);
                this.actions.show();
