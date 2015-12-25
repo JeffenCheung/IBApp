@@ -130,7 +130,7 @@ Ext.define('Ext.ux.TouchCalendarView', {
                             '<tpl for=".">',
 
                                 '<td class="time-block {[this.getClasses(values)]}" datetime="{[this.me.getDateAttribute(values.date)]}">',
-                                    '{date:this.formatDate()}',
+                                    '<div>{date:this.formatDate()}</div>',
                                 '</td>',
 
                                 '<tpl if="this.isEndOfRow(xindex)">',

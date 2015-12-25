@@ -146,6 +146,24 @@ html,body{position:relative;width:100%;height:100%}.x-fullscreen{position:absolu
 #ext-searchview-1 .x-list-item .x-innerhtml{
 	padding-right:25px;
 }
+#ext-mymeetingsview-1 .x-list-pullrefresh-wrap{
+	display: none;
+}
+#ext-mymeetingsview-1 .x-list-pullrefresh-arrow{
+	background: url("../icons/img7.png");
+	left: 0;
+	top: 60%;
+	position: absolute;
+	width: 161px;
+	height: 25px;
+}
+#ext-mymeetingsview-1 .x-list-pullrefresh-release .x-list-pullrefresh-arrow{
+	-webkit-transform:rotate(0deg);
+	-moz-transform:rotate(0deg);
+	-ms-transform:rotate(0deg);
+	-o-transform:rotate(0deg);
+	transform:rotate(0deg);
+}
 /*title bar common*/
 #ext-mymeetingsview-1 .x-button-label,
 #ext-mymeetingsview-1 .x-button-label,
