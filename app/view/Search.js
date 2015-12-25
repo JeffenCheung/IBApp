@@ -58,7 +58,7 @@ Ext.define('IBApp.view.Search', {
             // } 
             // ], 
             store: 'MyMeetingsSearch',
-            itemTpl: ['<div class="list-item-title">{title}<span class="meeting-status {statusEn}">{status}</span></div>',
+            itemTpl: ['<div class="list-item-title"><span style="display:inline-block;width:50%;white-space:nowrap;word-break:break-all;text-overflow:ellipsis;overflow:hidden;">{title}</span><span class="meeting-status {statusEn}">{status}</span></div>',
             '<div class="list-item-narrative">{location}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{startstr}&nbsp;~&nbsp;{endstr}</div>'
             ].join(""),
             emptyText: '<div class="notes-list-empty-text">没有会议</div>',

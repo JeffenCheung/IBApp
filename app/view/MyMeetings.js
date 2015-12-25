@@ -52,7 +52,7 @@ Ext.define('IBApp.view.MyMeetings', {
         	height: 250,
             itemHeight: 70,
             style: 'border-top: 1px solid #f0f0f0',
-        	itemTpl: ['<div class="list-item-title">{title}<span class="meeting-status {statusEn}">{status}</span><span class="list-item-narrative-reply">&nbsp;&nbsp;&nbsp;&nbsp;回复:{replyNum}/{attenderNum}</span></div>',
+        	itemTpl: ['<div class="list-item-title"><span style="display:inline-block;width:35%;white-space:nowrap;word-break:break-all;text-overflow:ellipsis;overflow:hidden;">{title}</span><span class="meeting-status {statusEn}">{status}</span><span class="list-item-narrative-reply">&nbsp;&nbsp;&nbsp;&nbsp;回复:{replyNum}/{attenderNum}</span></div>',
             '<div class="list-item-narrative">{location}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{startstr}&nbsp;~&nbsp;{endstr}</div>'
             ].join(""),
             plugins: [ 

@@ -175,7 +175,7 @@ Ext.define('Ext.ux.TouchCalendarSimpleEvents', {
 						if ((!this.multiEventDots && matchIndex > -1) || (this.multiEventDots && eventCount > 0)) {
 							// get maximum number of dots that can fitted in the cell
 							var maxDots = Math.min((cell.getWidth()/this.dotWidth), eventCount);
-							
+							cell.addCls("radius");
 							// append the event markup
 							var t =  new Ext.XTemplate(this.eventTpl).append(cell, {
 								events: (this.multiEventDots ? store.getRange().slice(0, maxDots) : ['event']),

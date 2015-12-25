@@ -1,4 +1,4 @@
-/* line 5, ../scss/Ext.ux.TouchCalendarSimpleEvents.scss */
+﻿/* line 5, ../scss/Ext.ux.TouchCalendarSimpleEvents.scss */
 .touch-calendar-view td {
   position: relative;
 }
@@ -13,7 +13,7 @@
   height: 4px;
   width: 4px;
   -webkit-border-radius: 4px;
-  background-color: #3F4E5E;
+  background-color: #fff;
   margin: 0 auto 0 2px;
 }
 /* line 25, ../scss/Ext.ux.TouchCalendarSimpleEvents.scss */

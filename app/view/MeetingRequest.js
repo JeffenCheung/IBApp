@@ -129,6 +129,7 @@ Ext.define('IBApp.view.MeetingRequest', {
         	label: '名称',
           id:'meetingNameTextid',
           readOnly:true,
+          width: '95%',
         };
         
 	      /* 会议开始时间 */
@@ -145,8 +146,9 @@ Ext.define('IBApp.view.MeetingRequest', {
           	ampm: false,
           	slotOrder: ['year','month','day','hour','minute'],
             doneButton: '确定',
-            cancelButton: '取消',
-        	}
+            cancelButton: '取消',            
+        	},
+        	width: '95%',
         };
 
         /* 会议结束时间 */
@@ -164,7 +166,8 @@ Ext.define('IBApp.view.MeetingRequest', {
         		slotOrder: ['year','month','day','hour','minute'],
             doneButton: '确定',
             cancelButton: '取消',
-        	}
+        	},
+        	width: '95%',
         };
         
         /* 地点 */
@@ -174,6 +177,7 @@ Ext.define('IBApp.view.MeetingRequest', {
         	label: '地点',
           id:'placeTypeTextid',
           readOnly:true,
+          width: '95%',
         };
 
         /*组织者*/
@@ -183,6 +187,7 @@ Ext.define('IBApp.view.MeetingRequest', {
         	label: '组织者',
           id:'organizerNameTextid',
           readOnly:true,
+          width: '95%',
         };
         
         /*与会人员*/
@@ -192,7 +197,7 @@ Ext.define('IBApp.view.MeetingRequest', {
         	label: '与会人员',
           id:'participatorNameTextid',
           readOnly:true,
-          width: '93%',
+          width: '95%',
         };
         
         /*服务*/
@@ -202,6 +207,7 @@ Ext.define('IBApp.view.MeetingRequest', {
         	label: '服务',
           id:'serviceTextid',
           readOnly:true,
+          width: '95%',
         };
 
         /*会议摘要*/
@@ -211,6 +217,7 @@ Ext.define('IBApp.view.MeetingRequest', {
             // name: 'mtContent',
             readOnly:true,
             id:'meetingTextid',
+            width: '95%',
         };
 
         /*提交按钮*/

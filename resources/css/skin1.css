@@ -1,4 +1,4 @@
-/* line 8, ../scss/skin1.scss */
+﻿/* line 8, ../scss/skin1.scss */
 .touch-calendar-view table {
   background: white;
 }
@@ -82,7 +82,7 @@
 }
 /* line 108, ../scss/skin1.scss */
 .touch-calendar-view tbody td.today {
-  background-color: #A5A5A5;
+  background-color: #e0e0e0;
   background-image: none;
   -webkit-box-shadow: none;
   text-shadow: none;
@@ -127,4 +127,10 @@
 
   height: 300px;
 
+}
+.touch-calendar-view tbody td.radius {
+    background-color: #ff5f3e;
+    border-radius: 30px;
+    border: 1px solid #ff5f3e;
+    color: #fff;
 }
