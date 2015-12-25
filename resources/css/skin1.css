@@ -32,7 +32,7 @@
 .touch-calendar-view table.day tr td.time-block,
 .touch-calendar-view table.day tr td.time-block-room {
   background-color: #fafafa;
-  height: 20px;
+  height: 30px;
   border-top: 1px solid #e0e0e0;
 }
 /* line 62, ../scss/skin1.scss */
@@ -42,10 +42,11 @@
 }
 
 .touch-calendar-view table.day tr td.time-block-room.empty {
-  background-color: #BCEE68;
+  /*background-color: #BCEE68;*/
 }
 .touch-calendar-view table.day tr td.time-block-room.occupied {
-  background-color: #EE2C2C;
+  /*background-color: #EE2C2C;*/
+  background-color: #CDCDB4;
 }
 .touch-calendar-view table.day tr td.time-block-room.empty.selected {
   background: url(../images/check.png) 20px center no-repeat;
@@ -126,4 +127,10 @@
 
   height: 300px;
 
+}
+
+.touch-calendar-view table.day tr td.time-block-room {
+  font-size: 0.5em;
+  font-weight: 100;
+  color: #CDCDB4;
 }

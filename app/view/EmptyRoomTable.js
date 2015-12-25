@@ -971,6 +971,7 @@ Ext.define('IBApp.view.EmptyRoomTable', {
 													'</td>',
                           '<tpl for="this.getRoomsArray()">',
                             '<td class="time-block-room" datetime="{[this.me.getDateAttribute(parent.date)]}" roomId="{roomId}">',
+                            '{[this.me.getDateAttribute(parent.date).substr(11)]}',
   													'</td>',
                           '</tpl>',
 												'</tr>',

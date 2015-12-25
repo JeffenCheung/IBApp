@@ -190,7 +190,7 @@ Ext.define("IBApp.view.RoomBooking", {
         var roomTable = new Ext.create('IBApp.view.EmptyRoomTable', {
             id: 'roomInfoTable',
             value: new Date(),
-            height: 680,
+            height: 1000,
         });
 
         var panelPages = Ext.create('Ext.Panel', {
