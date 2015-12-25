@@ -95,7 +95,7 @@ Ext.define('IBApp.controller.Login', {
 	    loginView.setMasked(false);
 
 	    //为当前userId为别名
-		// window.plugins.jPushPlugin.setAlias(Ext.getStore("UserInfo").getAt(0).get('userId'));
+		window.plugins.jPushPlugin.setAlias(Ext.getStore("UserInfo").getAt(0).get('userId'));
 
 	    /* setFunctionIcon via userRole */
 	    mainMenuView.setFunctionIcon(userRoles);
