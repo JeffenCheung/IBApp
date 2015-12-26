@@ -302,6 +302,10 @@ Ext.define("IBApp.view.RoomBooking", {
         var panel = this.down('#recommendBookingPanel');
         var formValuesObj = panel.getValues(true, true);
 
+        if ( typeof(formValuesObj.devTypeIds) == 'string') {
+            formValuesObj.devTypeIds = new Array(formValuesObj.devTypeIds);
+        }
+
         if(formValuesObj.services != null) {
             for (var i=0; i < formValuesObj.services.length; i++) {
                 var serv = this.down('#service'+i);

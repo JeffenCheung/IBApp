@@ -106,8 +106,9 @@ Ext.define("IBApp.controller.RoomBooking", {
         obj.attenders = null;
         obj.beginTime = strBeginTime;
         obj.endTime = strEndTime;
-        obj.devTypeIds = Ext.JSON.encode(obj.devTypeIds);
+        obj.devTypeIds = Ext.JSON.encode(me.clearArrayNull(obj.devTypeIds));
         var paramsJson = Ext.JSON.encode(obj);
+        // console.log(paramsJson);
 
         var URLServer = Ext.getStore("UrlAddr").getAt(0).get('urlServer');
         var urlGetRecommendMtRoom = URLServer + '/mtRoom/recommendList/' ;
@@ -303,6 +304,19 @@ Ext.define("IBApp.controller.RoomBooking", {
     onBacktoMainMenuCommand: function() {
         this.getApplication().getHistory().add(Ext.create('Ext.app.Action', {url: 'mainmenu'}));
     },
+
+    clearArrayNull: function (arr) {
+        if (arr !== null) {
+            for(var i=0,len=arr.length; i<len; i++) { 
+                if(!arr[i] || arr[i]=='' || arr[i] === undefined) { 
+                    arr.splice(i,1); 
+                    len--; 
+                    i--; 
+                } 
+            }
+        }
+        return arr; 
+    } 
 
 });
 
