@@ -150,8 +150,17 @@
 
     <script type="text/javascript" charset="utf-8">
         document.addEventListener("deviceready", function() {
+            /* 检测版本更新 如果服务未连接则不检测 */
             var updateUrl = "http://meeting.crscd.com.cn:8080/AppStore/version.xml";
-            window.AppUpdate.checkAppUpdate(this.onSuccess, this.onFail, updateUrl);
+            Ext.Ajax.request({
+                url: updateUrl,
+                method: 'GET',
+                success: function (response) {
+                    window.AppUpdate.checkAppUpdate(this.onSuccess, this.onFail, updateUrl);
+                },
+                failure: function (response) {
+                }
+            });
 
             window.plugins.jPushPlugin.init();       
             window.plugins.jPushPlugin.getRegistrationID(function(id){
