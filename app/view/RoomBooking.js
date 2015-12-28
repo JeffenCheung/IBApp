@@ -190,7 +190,7 @@ Ext.define("IBApp.view.RoomBooking", {
         var roomTable = new Ext.create('IBApp.view.EmptyRoomTable', {
             id: 'roomInfoTable',
             value: new Date(),
-            height: 680,
+            height: 1000,
         });
 
         var panelPages = Ext.create('Ext.Panel', {
@@ -301,6 +301,10 @@ Ext.define("IBApp.view.RoomBooking", {
     onSubmitButtonTap: function() {
         var panel = this.down('#recommendBookingPanel');
         var formValuesObj = panel.getValues(true, true);
+
+        if ( typeof(formValuesObj.devTypeIds) == 'string') {
+            formValuesObj.devTypeIds = new Array(formValuesObj.devTypeIds);
+        }
 
         if(formValuesObj.services != null) {
             for (var i=0; i < formValuesObj.services.length; i++) {

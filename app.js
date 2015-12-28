@@ -73,6 +73,10 @@ Ext.application({
 
         this.getApplication().getHistory().add(Ext.create('Ext.app.Action', {url: 'login'}));
 
+        /* 解决msg弹出框不消失的问题 不同安卓机型对渲染效果的支持不同 */
+        // Ext.Msg.defaultAllowedConfig.showAnimation = false;
+        Ext.Msg.defaultAllowedConfig.hideAnimation = false;
+
         document.addEventListener("backbutton", function() {
             var curUrl = window.location.hash;
             if ((curUrl !='#mainmenu') && (curUrl !='#login')) {

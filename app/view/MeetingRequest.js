@@ -4,7 +4,7 @@
 });
 
 var mtObj = new Object();
-
+var strEn = '';
 
 Ext.define('IBApp.view.MeetingRequest', {
     extend: 'Ext.form.Panel',
@@ -43,9 +43,10 @@ Ext.define('IBApp.view.MeetingRequest', {
                 var Role = Ext.getStore("UserInfo").getAt(0).get('userId');              
                 console.log(Role);
                 console.log(mtObj.organizerId);
+                var items = [];
                 if (Role == mtObj.organizerId)
                 {
-                  var items = [
+                  items = [
                   {
                       text:'回复',
                       // ui:'decline',
@@ -81,7 +82,7 @@ Ext.define('IBApp.view.MeetingRequest', {
                 }
                 else
                 {
-                  var items = [
+                  items = [
                   {
                       text:'回复',
                       ui:'decline',
@@ -102,6 +103,9 @@ Ext.define('IBApp.view.MeetingRequest', {
                     this.actions = Ext.create('Ext.ActionSheet',{
                        items:items  
                    });
+               }
+               else {
+                this.actions.setItems(items);
                }
                Ext.Viewport.add(this.actions);
                this.actions.show();
@@ -310,6 +314,9 @@ Ext.define('IBApp.view.MeetingRequest', {
         {
             Ext.Msg.alert('会议已取消！');
         }
+        else if (strEn === 'begining') {
+          Ext.Msg.alert('进行中，无法编辑！');
+        }
         else
         {
           var me = this;
@@ -449,12 +456,17 @@ Ext.define('IBApp.view.MeetingRequest', {
 
     onCancelMeetingTap:function() {
       var me = this;
-      var mtCancelobj = new Object();
-      
-      mtCancelobj.changeFlag = 1;
-      mtCancelobj.mtId = mtObj.mtId;
-      mtCancelobj.mtFlag = mtObj.mtFlag;
-      this.fireEvent("mtCancelCommand", mtCancelobj);
+      if (strEn === 'begining') {
+        Ext.Msg.alert('进行中，无法取消！');
+      }
+      else {
+        var mtCancelobj = new Object();
+        
+        mtCancelobj.changeFlag = 1;
+        mtCancelobj.mtId = mtObj.mtId;
+        mtCancelobj.mtFlag = mtObj.mtFlag;
+        this.fireEvent("mtCancelCommand", mtCancelobj);
+      }
       me.actions.hide(); 
     },
 

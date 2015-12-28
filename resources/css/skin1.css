@@ -147,3 +147,8 @@
 .touch-calendar-view tbody td.radius div+span{
 	  top: 32px !important;
 }
+.touch-calendar-view table.day tr td.time-block-room {
+  font-size: 0.5em;
+  font-weight: 100;
+  color: #CDCDB4;
+}
