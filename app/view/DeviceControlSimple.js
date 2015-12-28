@@ -375,6 +375,82 @@ Ext.define('IBApp.view.DeviceControlSimple', {
 				    fieldset.add(segmentedButton);
                 };
     		}
+            else if (groupNames[i] == '窗帘1') {
+                console.log('窗帘1');
+                for (var j = 0; j < dataArray.length; j++) {
+                    var segmentedButton  = Ext.create('Ext.SegmentedButton', {
+                        itemId: dataArray[j].get('controlId').replace('I', ''),
+                        allowMultiple: false,
+                        items: [
+                            {
+                                text: '上升',
+                                id: 'curtain0011',
+                            },
+                            {
+                                text: '停止',
+                                id: 'curtain0012',
+                            },
+                            {
+                                text: '下降',
+                                id: 'curtain0013',
+                            }
+                        ],
+                        listeners: {
+                            initialize: function(container) {
+                                if('1' == dataArray[j].get('instanceValue')){this.setPressedButtons( 'curtain0011' );}
+                                else if('2' == dataArray[j].get('instanceValue')){this.setPressedButtons( 'curtain0012' );}
+                                else if('3' == dataArray[j].get('instanceValue')){this.setPressedButtons( 'curtain0013' );};
+                            },
+                            toggle: function(container, button, pressed){
+                                var index = devStore.findExact('controlId', container.getItemId()+'O');  
+                                console.log(index);
+                                if (index != -1) {
+                                    me.controlDev(devStore.getAt(index).get('parentId'), devStore.getAt(index).get('instanceType'), devStore.getAt(index).get('instanceId'), button.getId().replace('curtain001',''));
+                                };
+                            }
+                        }
+                    });
+                    fieldset.add(segmentedButton);
+                };
+            }
+            else if (groupNames[i] == '窗帘2') {
+                console.log('窗帘2');
+                for (var j = 0; j < dataArray.length; j++) {
+                    var segmentedButton  = Ext.create('Ext.SegmentedButton', {
+                        itemId: dataArray[j].get('controlId').replace('I', ''),
+                        allowMultiple: false,
+                        items: [
+                            {
+                                text: '上升',
+                                id: 'curtain0021',
+                            },
+                            {
+                                text: '停止',
+                                id: 'curtain0022',
+                            },
+                            {
+                                text: '下降',
+                                id: 'curtain0023',
+                            }
+                        ],
+                        listeners: {
+                            initialize: function(container) {
+                                if('1' == dataArray[j].get('instanceValue')){this.setPressedButtons( 'curtain0021' );}
+                                else if('2' == dataArray[j].get('instanceValue')){this.setPressedButtons( 'curtain0022' );}
+                                else if('3' == dataArray[j].get('instanceValue')){this.setPressedButtons( 'curtain0023' );};
+                            },
+                            toggle: function(container, button, pressed){
+                                var index = devStore.findExact('controlId', container.getItemId()+'O');  
+                                console.log(index);
+                                if (index != -1) {
+                                    me.controlDev(devStore.getAt(index).get('parentId'), devStore.getAt(index).get('instanceType'), devStore.getAt(index).get('instanceId'), button.getId().replace('curtain002',''));
+                                };
+                            }
+                        }
+                    });
+                    fieldset.add(segmentedButton);
+                };
+            }
     		else {
     			continue;
     		}
