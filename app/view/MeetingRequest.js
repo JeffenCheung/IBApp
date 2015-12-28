@@ -4,7 +4,7 @@
 });
 
 var mtObj = new Object();
-
+var strEn = '';
 
 Ext.define('IBApp.view.MeetingRequest', {
     extend: 'Ext.form.Panel',
@@ -305,6 +305,9 @@ Ext.define('IBApp.view.MeetingRequest', {
         {
             Ext.Msg.alert('会议已取消！');
         }
+        else if (strEn === 'begining') {
+          Ext.Msg.alert('进行中，无法编辑！');
+        }
         else
         {
           var me = this;
@@ -444,12 +447,17 @@ Ext.define('IBApp.view.MeetingRequest', {
 
     onCancelMeetingTap:function() {
       var me = this;
-      var mtCancelobj = new Object();
-      
-      mtCancelobj.changeFlag = 1;
-      mtCancelobj.mtId = mtObj.mtId;
-      mtCancelobj.mtFlag = mtObj.mtFlag;
-      this.fireEvent("mtCancelCommand", mtCancelobj);
+      if (strEn === 'begining') {
+        Ext.Msg.alert('进行中，无法取消！');
+      }
+      else {
+        var mtCancelobj = new Object();
+        
+        mtCancelobj.changeFlag = 1;
+        mtCancelobj.mtId = mtObj.mtId;
+        mtCancelobj.mtFlag = mtObj.mtFlag;
+        this.fireEvent("mtCancelCommand", mtCancelobj);
+      }
       me.actions.hide(); 
     },
 
