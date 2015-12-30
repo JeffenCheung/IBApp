@@ -83,7 +83,7 @@
   color: #FFFFFF;
   text-shadow: #333 1px 1px 2px;
   -webkit-box-shadow: inset 0px 0px 8px #000;
-  border: 1px solid #aaa;
+/*  border: 1px solid #aaa;*/
   background: #7188a8;
   background-image: none;
   background-color: #44566f;
@@ -134,7 +134,7 @@
 /* line 124, ../scss/Ext.ux.TouchCalendarView.scss */
 .touch-calendar-view td.today.selected {
   color: #FFFFFF;
-  text-shadow: #333 1px 1px 2px;
+/*  text-shadow: #333 1px 1px 2px;*/
   border: none;
   background: #1980e5;
   background-image: none;

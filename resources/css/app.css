@@ -49,6 +49,8 @@ html,body{position:relative;width:100%;height:100%}.x-fullscreen{position:absolu
 /*homepage*/
 #ext-mainmenuview-1 #ext-element-53,#ext-element-39{
 	background-image: url("../icons/img3.png");
+	background-repeat: no-repeat;
+	background-size: 100% auto;
 }
 #ext-element-727{
 	background-color: #3190e8;
@@ -83,6 +85,7 @@ html,body{position:relative;width:100%;height:100%}.x-fullscreen{position:absolu
 }*/
 #ext-meetingrequestview-1 #ext-element-379{
     border: 0px;    
+    min-height: 736px;
   }
 #ext-meetingrequestview-1 #ext-element-379 .x-field::before {
   border-bottom: 0px;
@@ -191,4 +194,64 @@ html,body{position:relative;width:100%;height:100%}.x-fullscreen{position:absolu
 }
 .x-toolbar .x-title{
 	  color: #000000;
+}
+.x-input-el{
+	background: #177DD9;
+    font-family: "微软雅黑";
+	padding: .4em .4em .4em .4em;
+	color:#fff;
+	min-height: 2.4em;
+}
+.x-form .x-field .x-field-input{
+	border: 1px solid #26539F;
+}
+#ext-loginview-1 #ext-button-1 span{
+	font-family: "微软雅黑";
+}
+#ext-loginview-1 #ext-button-1{
+	border-radius: 4px;
+}
+.x-button{
+	height: 2.6em;
+	line-height: 2.6em;
+}
+.x-field-input .x-clear-icon{
+	background:url(../images/delete.png) no-repeat;
+	background-position: center center;
+    background-size: 55% 55%;
+}
+#ext-loginview-1 #ext-button-1 span{
+	font-size: 1.04em;
+}
+#ext-mainmenuview-1 #ext-element-58 {
+	font-family: "微软雅黑";
+}
+#ext-mainmenuview-1 #ext-element-37 .x-panel .x-panel-inner .x-innerhtml{
+	font-family: "微软雅黑";
+}
+.x-form .x-field .x-has-width{
+	border:0px
+}
+.x-has-width .x-input-el{
+	background: #fff;
+	color: #666666;
+	min-height: 2.6em;
+}
+#ext-meetingrequestview-1 #ext-element-379 span{
+	font-weight: normal;
+    font-family: "微软雅黑";
+}
+.x-form-label span{
+	font-size: 1em;
+	font-weight: normal;
+}
+.x-field-textarea textarea {
+	min-height: auto; 
+}
+
+#ext-element-387{
+	color:#999
+}
+#ext-element-393{
+	color:#999
 }

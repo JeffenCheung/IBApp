@@ -44,12 +44,15 @@ Ext.define('IBApp.view.MyMeetings', {
             eventStore: eventStore,
             plugins: [Ext.create('Ext.ux.TouchCalendarSimpleEvents')]
         });
-
+		var textHeight=260;
+		if(window.screen.availWidth<500){
+			textHeight=window.screen.availHeight-window.screen.availWidth-window.screen.availWidth/14;
+		};
         var eventList = Ext.create('Ext.dataview.List', {
         	docked: 'bottom',
             onItemDisclosure: true,
             id:'eventListid',
-        	height: 250,
+        	height: textHeight ,
             itemHeight: 70,
             style: 'border-top: 1px solid #f0f0f0',
         	itemTpl: ['<div class="list-item-title"><span style="display:inline-block;width:35%;white-space:nowrap;word-break:break-all;text-overflow:ellipsis;overflow:hidden;font-family: STHeitiSC-Light,Microsoft YaHei,Arial;">{title}</span><span class="meeting-status {statusEn}">{status}</span><span class="list-item-narrative-reply">&nbsp;&nbsp;&nbsp;&nbsp;回复:{replyNum}/{attenderNum}</span></div>',

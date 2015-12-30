@@ -5,12 +5,12 @@ var userInfoTemplate = new Ext.XTemplate(
 	'<img width=80px height=20px src="resources/icons/img5.png" />',
 	'</div>',
 	'<div>',
-	'<img width=80px height=80px style="margin-top: 5px;" src="resources/icons/img4.png" />',
+	'<img width=80px height=80px style="margin-top: 15px;" src="resources/icons/img4.png" />',
 	'</div>',
 	'</div>',
 	'<div style="color:#ffffff">',
-	'<div style="margin-top: 40px;">Admin &nbsp{userName}</div>',
-	'<div style="margin-top: 20px;">工号：{userNo}</div>',
+	'<div style="margin-top: 56px;">Admin &nbsp{userName}</div>',
+	'<div style="margin-top: 6px;">工号：{userNo}</div>',
 	'</div>',
 	'</tpl>'
 );

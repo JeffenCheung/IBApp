@@ -27,7 +27,7 @@ Ext.define('IBApp.view.MainMenu', {
 						itemId: 'LogoutButton',
 						text: '退出',
 						align: 'right',
-						style: 'background: none;border: 0px;width: 20%;left: 80%;top: 7px;'
+						style: 'background: none;border: 0px;width: 20%;left: 80%;top: 2px;'
 					}
 				],
 				style: 'border-bottom: 1px solid #f0f0f0',

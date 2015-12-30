@@ -88,6 +88,7 @@ Ext.application({
         }, false);
 
         var me = this;
+        if(window.plugins)
         window.plugins.jPushPlugin.openNotificationInAndroidCallback= function(data){
             var bToObj  = Ext.JSON.decode(data);
 

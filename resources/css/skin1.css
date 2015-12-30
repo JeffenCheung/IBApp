@@ -83,11 +83,11 @@
 }
 /* line 108, ../scss/skin1.scss */
 .touch-calendar-view tbody td.today {
-  background-color: #e0e0e0;
+  background-color: #fff;
   background-image: none;
   -webkit-box-shadow: none;
   text-shadow: none;
-  color: #3F4E5E;
+  color: #FF5F3E;
 }
 /* line 117, ../scss/skin1.scss */
 .touch-calendar-view tbody td.unselectable {
@@ -97,16 +97,18 @@
 /* line 123, ../scss/skin1.scss */
 .touch-calendar-view tbody td.selected {
   background: none;
-  background-color: #E0E0E0;
+   background-color: #FF5F3E;
   border: none;
   text-shadow: none;
-  color: #3F4E5E;
+  color: white;
+  border-radius: 50%;
 }
 /* line 132, ../scss/skin1.scss */
 .touch-calendar-view tbody td.today.selected {
   background: none;
-  background-color: #E0E0E0;
+  background-color: #FF5F3E;
   color: white;
+  border-radius: 50%;
 }
 /* line 141, ../scss/skin1.scss */
 .touch-calendar-view thead {
@@ -126,7 +128,7 @@
 
 .touch-calendar-view table.month {
 
-  height: 300px;
+/*  height: 300px;*/
 
 }
 .touch-calendar-view tbody td{
@@ -134,22 +136,24 @@
 	height: 42px;
 }
 .touch-calendar-view tbody td.radius div{
-	width: 34px;
-	height: 34px;
-	position: absolute;
-	top: 15%;
-  left: 13%;
-	background-color: #ff5f3e;
-	border-radius: 50%;
-	border: 1px solid #ff5f3e;
-	color: #fff;
-	padding-top: 11%;
+	  width: 34px;
+    margin: 0px auto;
+    text-align: center;
+    position: relative;
+    top: 7px;
 }
 .touch-calendar-view tbody td.radius div+span{
-	  top: 32px !important;
+	     
+    margin: 0px auto;
+    position: relative;
+    top: 5px;
+    left: 0px;
 }
 .touch-calendar-view table.day tr td.time-block-room {
   font-size: 0.5em;
   font-weight: 100;
   color: #CDCDB4;
+}
+.touch-calendar-view tbody td.selected span.simple-event-multi{
+	background-color: #fff;
 }

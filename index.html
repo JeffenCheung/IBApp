@@ -11,25 +11,42 @@
          */
         html, body {
             height: 100%;
-            background-color: #1D63BB;
-            
+            background-color: #347AC5;        
         }
-
         #appLoadingIndicator {
-           
-            
-           
-            text-align: center;
-            width: 100%;
-           background-color: #1D63BB;
-            /*-webkit-animation-name: appLoadingIndicator;
-            -webkit-animation-duration: 0.5s;
-            -webkit-animation-iteration-count: infinite;
-            -webkit-animation-direction: linear;*/
+           text-align: center;
+           width: 100%;
+           height: 100%;
+          
+        /*-webkit-animation-name: appLoadingIndicator;
+        -webkit-animation-duration: 0.5s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-direction: linear;*/
         }
-
-       
-
+        #build{
+           background-color: #347ac5;
+		   background-image: url("../IBApp/resources/icons/img1.png");
+		   background-repeat: no-repeat;
+		   background-position: bottom;
+		   margin:auto;
+		   background-size: auto 100%;
+		   height: 258px;
+		   width: 100%;
+		   position:absolute;
+		   bottom:0px;
+        }
+        #logo{
+  		   background-color: #347ac5;
+		   background-image: url("../IBApp/resources/icons/profile.png");
+		   background-repeat: no-repeat;
+		   background-position: top;
+		   margin:auto;
+		   background-size: auto 100%;
+		   height: 100px;
+		   width: 100%;
+		   position:absolute;
+		   top:20%;
+        }
         @-webkit-keyframes appLoadingIndicator{
             0% {
                 opacity: 0.8
@@ -128,7 +145,8 @@
         .closed,.canceled,.draft,.deleted
          {
             background-color: #d2d2d0;
-            color: #333333;
+            color: #666666;
+            font-family: "微软雅黑";
         }
        
 
@@ -163,16 +181,14 @@
             });
 
         }, false);
-
-        
-
     </script>
     <!-- The line below must be kept intact for Sencha Command to build your application -->
     <script id="microloader" type="text/javascript" src=".sencha/app/microloader/development.js"></script>
 </head>
 <body>
     <div id="appLoadingIndicator">
-         <img src="./resources/images/welcom.jpg" height="100%" width="100%"> 
+    	 <div id="logo"></div>
+         <div id="build"></div>
     </div>
 </body>
 </html>

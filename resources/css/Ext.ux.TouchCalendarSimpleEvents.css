@@ -4,16 +4,15 @@
 }
 /* line 9, ../scss/Ext.ux.TouchCalendarSimpleEvents.scss */
 .touch-calendar-view td span.simple-event-wrapper, .touch-calendar-view td span.simple-event-wrapper-multi {
-  position: absolute;
   overflow: hidden;
 }
 /* line 15, ../scss/Ext.ux.TouchCalendarSimpleEvents.scss */
 .touch-calendar-view td span.simple-event-multi {
-  float: left;
+	display: inline-block;
   height: 4px;
   width: 4px;
   -webkit-border-radius: 4px;
-  background-color: #fff;
+  background-color: #ccc;
   margin: 0 auto 0 2px;
 }
 /* line 25, ../scss/Ext.ux.TouchCalendarSimpleEvents.scss */
