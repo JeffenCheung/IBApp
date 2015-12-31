@@ -44,9 +44,18 @@ Ext.define('IBApp.view.MyMeetings', {
             eventStore: eventStore,
             plugins: [Ext.create('Ext.ux.TouchCalendarSimpleEvents')]
         });
-		var textHeight=260;
-		if(window.screen.availWidth<500){
-			textHeight=window.screen.availHeight-window.screen.availWidth-window.screen.availWidth/14;
+        var textHeight=260;
+        changeDivHeight();
+		function changeDivHeight(){
+			if(window.screen.availWidth<500){
+				textHeight=window.screen.availHeight-window.screen.availWidth;
+				if(window.screen.availWidth>374&&window.screen.availWidth<414){	
+					textHeight=window.screen.availHeight-window.screen.availWidth-38;	
+				};
+				if(window.screen.availWidth>319&&window.screen.availWidth<374){
+					textHeight=window.screen.availHeight-window.screen.availWidth-5;
+				};
+		    };   
 		};
         var eventList = Ext.create('Ext.dataview.List', {
         	docked: 'bottom',
@@ -212,5 +221,5 @@ Ext.define('IBApp.view.MyMeetings', {
 
 
     },
-
+	
 });

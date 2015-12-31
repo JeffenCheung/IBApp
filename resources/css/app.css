@@ -255,3 +255,68 @@ html,body{position:relative;width:100%;height:100%}.x-fullscreen{position:absolu
 #ext-element-393{
 	color:#999
 }
+div#ext-element-351 {
+    position: relative;
+    top: -0.15em;
+}
+.x-button .x-button-icon.search:before {
+    top: 0.04em;
+ }
+ .x-button.x-button-back .x-button-label{
+ 	line-height: 1.2em;
+ }
+ .x-button.x-button-back:before {
+    content: ' "';
+    font-family: ios7'';
+    color: #3190E8;
+    font-size: 1.2em;
+    text-align: center;
+    background-color: transparent;
+    line-height: 2em;
+    padding-left: 10px;
+    background-image: url(../images/back.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 0.6em;
+    position: relative;
+    top: -0.25em;
+    padding-right: 0em;
+}
+.x-button {
+    line-height: 1.6em;
+}  
+.x-center{
+	background-color: #3190E8;
+}
+.x-button.x-button-back .x-button-label, .x-button.x-button-back .x-badge{
+	    color: #3190E8;
+}
+.x-toolbar .x-segmentedbutton .x-button, .x-segmentedbutton .x-button{
+	border: 1px solid #fff;
+}
+.x-toolbar .x-segmentedbutton .x-button.x-button-pressed, .x-segmentedbutton .x-button.x-button-pressed{
+	    background-color: #fff;
+}
+.x-toolbar .x-segmentedbutton .x-button.x-button-pressed .x-button-label{
+	color: #3190E8;
+}
+.x-toolbar .x-segmentedbutton .x-last, .x-segmentedbutton .x-last{
+	border-right: 1px solid #fff;
+}
+.x-button-normal .x-button-label{
+	color: #fff;
+}
+
+div#ext-roombookingview-1 .x-input-el{
+	 background-color: #fff;
+     color: #666;
+}
+div#ext-fieldset-2 .x-field-input{
+	border:0px;
+}
+#panelPages .x-form .x-field .x-field-input{
+	border:0px
+}
+.x-form-fieldset .x-field:before{
+	border:0px
+}
