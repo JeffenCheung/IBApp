@@ -103,6 +103,10 @@
             "update": "delta"
         },
         {
+            "path": "resources/css/newUI.css",
+            "update": "delta"
+        },
+        {
             "path": "resources/css/Ext.ux.TouchCalendarView.css",
             "update": "delta"
         },
