@@ -1,11 +1,17 @@
 var userInfoTemplate = new Ext.XTemplate(
 	'<tpl for=".">',
-	'<img width=100px height=100px style="float:left;margin-right:40px;margin-left:10px" src="{imgURL}" />',
-	'<div class="user-profile-title">{userName}</div>',
-	'<div class="user-profile-narrative">',
-	'<p>{userNo}</p>',
-	// '<p>{userRoles}</p>',
-	'</div>',
+		'<div style="float:left;margin-right:40px;">',
+			'<div>',
+				'<img width=80px height=20px src="resources/icons/img5.png" />',
+			'</div>',
+			'<div>',
+				'<img width=80px height=80px style="margin-top: 15px;" src="resources/icons/img4.png" />',
+			'</div>',
+		'</div>',
+		'<div style="color:#ffffff">',
+			'<div style="margin-top: 56px;">姓名：{userName}</div>',
+			'<div style="margin-top: 6px;">工号：{userNo}</div>',
+		'</div>',
 	'</tpl>'
 );
 
@@ -17,7 +23,8 @@ Ext.define('IBApp.view.UserInfoList', {
 	config: {
 		store: 'UserInfo',
 		itemTpl: userInfoTemplate,
-		disableSelection: true,
+		itemCls: 'userInfoListCls',
+		disabled: true,
 		// onItemDisclosure: true,
 		scrollable: {
             disabled: true

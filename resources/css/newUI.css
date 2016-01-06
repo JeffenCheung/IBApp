@@ -63,38 +63,22 @@
 }*/
 
 /*homepage*/
-/*#ext-mainmenuview-1 #ext-element-53,#ext-element-39{
+.userInfoListCls {
 	background-image: url("../icons/img3.png");
 	background-repeat: no-repeat;
 	background-size: 100% auto;
-}
-#ext-element-727{
-	background-color: #3190e8;
-}
-#ext-element-730{
-	background-color: #d470e0;
-}
-#ext-element-732{
-	background-color: #3bdddf;
-}
-#ext-element-734{
-	background-color: #7fcf52;
-}
-#ext-element-736{
-	background-color: #91E698;
-}
-#ext-element-738{
-	background-color: #B6D20C;
 }
 #ext-mainmenuview-1 #ext-element-37 .x-panel .x-panel-inner .x-innerhtml{
 	position: absolute;
   	top: 15px;
   	left: 15px;
   	color: #FFFFFF;
+  	font-family: "微软雅黑";
 }
 #ext-mainmenuview-1 #ext-element-58{
 	color: #FFFFFF;
-}*/
+	font-family: "微软雅黑";
+}
 
 /*MyMeetingInfo*/
 /*#ext-meetingrequestview-1 #ext-element-362{
@@ -237,12 +221,7 @@
 }*/
 
 /*
-#ext-mainmenuview-1 #ext-element-58 {
-	font-family: "微软雅黑";
-}
-#ext-mainmenuview-1 #ext-element-37 .x-panel .x-panel-inner .x-innerhtml{
-	font-family: "微软雅黑";
-}
+
 .x-form .x-field .x-has-width{
 	border:0px
 }
