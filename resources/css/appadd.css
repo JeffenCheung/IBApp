@@ -1,0 +1,447 @@
+/*add by libo*/
+/*title bar*/
+.x-toolbar.x-docked-top{
+	border-radius:0;
+}
+/*login*/
+#ext-loginview-1 #ext-element-33{
+	background-color: #347ac5;
+	background-image: url("../icons/img2.png");
+	background-repeat: no-repeat;
+	background-position: bottom;
+}
+#ext-loginview-1 #ext-element-33 .x-pack-center{
+	-webkit-box-pack: initial;
+	-ms-flex-pack: center;
+	justify-content: center;
+	padding-top: 10%;
+}
+#ext-loginview-1 #ext-fieldset-1{
+	margin-top: 25px;
+}
+#ext-loginview-1 #ext-element-10{
+	background:none;
+	border:0px;
+	text-align: center;
+}
+#ext-loginview-1 #ext-element-10>div{
+	margin-left:10px;
+	margin-right:10px;
+	background-color: #177cd9;
+}
+#ext-loginview-1 #ext-element-10>div:first-child::before{
+	border:0px;
+}
+#ext-loginview-1 #ext-element-10>div:last-child{
+	margin-top:10px;
+}
+#ext-loginview-1 #ext-button-1{
+	margin-left:10px;
+	margin-right:10px;
+	margin-top:25px;
+	border: 0px;	
+	background-color: #2f5da8;
+}
+#ext-loginview-1 #ext-button-1 span{	
+	color: #FFFFFF;
+}
+/*homepage*/
+#ext-mainmenuview-1 #ext-element-53,#ext-element-39{
+	background-image: url("../icons/img3.png");
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+#ext-element-727{
+	background-color: #3190e8;
+}
+#ext-element-730{
+	background-color: #d470e0;
+}
+#ext-element-732{
+	background-color: #3bdddf;
+}
+#ext-element-734{
+	background-color: #7fcf52;
+}
+#ext-element-736{
+	background-color: #91E698;
+}
+#ext-element-738{
+	background-color: #B6D20C;
+}
+#ext-mainmenuview-1 #ext-element-37 .x-panel .x-panel-inner .x-innerhtml{
+	position: absolute;
+  	top: 15px;
+  	left: 15px;
+  	color: #FFFFFF;
+}
+#ext-mainmenuview-1 #ext-element-58{
+	color: #FFFFFF;
+}
+/*MyMeetingInfo*/
+/*#ext-meetingrequestview-1 #ext-element-362{
+	background-color: #ffffff;
+}*/
+#ext-meetingrequestview-1 #ext-element-379{
+    border: 0px;    
+    min-height: 736px;
+  }
+#ext-meetingrequestview-1 #ext-element-379 .x-field::before {
+  border-bottom: 0px;
+}
+#ext-meetingrequestview-1 #ext-element-379 span {
+    font-weight: bold;    
+  }
+#ext-meetingrequestview-1 #ext-element-379 .x-form-label{
+    text-align: right;
+    padding-left: 3px;
+    padding-right: 5px;
+  }
+#ext-meetingrequestview-1 .x-input-el{
+	  padding: 0.4em .4em .4em .4em;
+}
+#ext-meetingrequestview-1 #participatorNameTextid .x-input-el,
+#ext-meetingrequestview-1 #meetingTextid .x-input-el{
+	  padding: 0.7em .4em .4em .4em;
+}
+#meetingNameTextid input{
+ 	width: 65%;
+}
+/*searchfiled*/
+#ext-searchfield-1{
+	width: 65%;
+}
+#ext-searchfield-1 input::-webkit-input-placeholder { /* WebKit browsers */
+    color: #98c8f4;
+}
+#ext-searchfield-1 input:-moz-placeholder { /* WebKit browsers */
+    color: #98c8f4;
+}
+#ext-searchfield-1 input::-moz-placeholder { /* WebKit browsers */
+    color: #98c8f4;
+}
+#ext-searchfield-1 input:-ms-input-placeholder { /* WebKit browsers */
+    color: #98c8f4;
+}
+#ext-searchfield-1 .x-field-input{
+	background: none;
+  	border: 1px solid #E2DFDF;
+  	color: #fff;
+}
+#ext-searchfield-1 .x-component-outer{
+	padding: .4em 0em 0 .6em;;
+}
+#ext-searchview-1 .x-toolbar.x-docked-top{
+	border-radius:0;
+	background-color: #3190E8;
+}
+.x-list .x-list-item.x-list-item-tpl:before {
+    left: 0em;
+    border-bottom: solid 1px #cccccc;
+}
+/*meeting list*/
+#ext-mymeetingsview-1 .x-list-item .x-list-disclosure,
+#ext-searchview-1 .x-list-item .x-list-disclosure{
+	top:20%;
+}
+#ext-mymeetingsview-1 .x-list-item .x-innerhtml,
+#ext-searchview-1 .x-list-item .x-innerhtml{
+	padding-right:25px;
+}
+#ext-mymeetingsview-1 .x-list-pullrefresh-wrap{
+	display: none;
+}
+#ext-mymeetingsview-1 .x-list-pullrefresh-arrow{
+	background: url("../icons/img7.png");
+	left: 0;
+	top: 60%;
+	position: absolute;
+	width: 161px;
+	height: 25px;
+}
+#ext-mymeetingsview-1 .x-list-pullrefresh-release .x-list-pullrefresh-arrow{
+	-webkit-transform:rotate(0deg);
+	-moz-transform:rotate(0deg);
+	-ms-transform:rotate(0deg);
+	-o-transform:rotate(0deg);
+	transform:rotate(0deg);
+}
+/*title bar common*/
+#ext-mymeetingsview-1 .x-button-label,
+#ext-mymeetingsview-1 .x-button-label,
+#ext-searchview-1 .x-button-label,
+#ext-searchview-1 .x-button-label,
+#ext-meetingrequestview-1 .x-button-label,
+#ext-meetingrequestview-1 .x-button-label{
+	color: #fff;
+}
+#ext-mymeetingsview-1 .x-center,
+#ext-mymeetingsview-1 .x-centered,
+#ext-searchview-1 .x-center,
+#ext-searchview-1 .x-centered,
+#ext-meetingrequestview-1 .x-center,
+#ext-meetingrequestview-1 .x-centered{
+	background-color: #3190E8;
+}
+.x-button-icon{
+	  color: #ffffff;
+}
+#ext-mymeetingsview-1 .x-toolbar .x-title,
+#ext-searchview-1 .x-toolbar .x-title,
+#ext-meetingrequestview-1 .x-toolbar .x-title{
+	  color: #ffffff;
+}
+.x-toolbar .x-title{
+	  color: #000000;
+}
+.x-input-el{
+	background: #177DD9;
+    font-family: "微软雅黑";
+	padding: .4em .4em .4em .4em;
+	color:#fff;
+	min-height: 2.4em;
+}
+.x-form .x-field .x-field-input{
+	border: 1px solid #26539F;
+}
+#ext-loginview-1 #ext-button-1 span{
+	font-family: "微软雅黑";
+}
+#ext-loginview-1 #ext-button-1{
+	border-radius: 4px;
+}
+.x-button{
+	height: 2.6em;
+	line-height: 2.6em;
+}
+.x-field-input .x-clear-icon{
+	background:url(../images/delete.png) no-repeat;
+	background-position: center center;
+    background-size: 55% 55%;
+}
+#ext-loginview-1 #ext-button-1 span{
+	font-size: 1.04em;
+}
+#ext-mainmenuview-1 #ext-element-58 {
+	font-family: "微软雅黑";
+}
+#ext-mainmenuview-1 #ext-element-37 .x-panel .x-panel-inner .x-innerhtml{
+	font-family: "微软雅黑";
+}
+.x-form .x-field .x-has-width{
+	border:0px
+}
+.x-has-width .x-input-el{
+	background: #fff;
+	color: #666666;
+	min-height: 2.6em;
+}
+#ext-meetingrequestview-1 #ext-element-379 span{
+	font-weight: normal;
+    font-family: "微软雅黑";
+}
+.x-form-label span{
+	font-size: 1em;
+	font-weight: normal;
+}
+.x-field-textarea textarea {
+	min-height: auto; 
+}
+
+#ext-element-387{
+	color:#999
+}
+#ext-element-393{
+	color:#999
+}
+div#ext-element-351 {
+    position: relative;
+    top: -0.15em;
+}
+.x-button .x-button-icon.search:before {
+    top: 0.04em;
+ }
+ .x-button.x-button-back .x-button-label{
+ 	line-height: 1.2em;
+ }
+ .x-button.x-button-back:before {
+    content: ' "';
+    font-family: ios7'';
+    color: #3190E8;
+    font-size: 1.2em;
+    text-align: center;
+    background-color: transparent;
+    line-height: 2em;
+    padding-left: 10px;
+    background-image: url(../images/back.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 0.6em;
+    position: relative;
+    top: -0.25em;
+    padding-right: 0em;
+}
+.x-button {
+    line-height: 1.6em;
+}  
+.x-center{
+	background-color: #3190E8;
+}
+.x-button.x-button-back .x-button-label, .x-button.x-button-back .x-badge{
+	    color: #3190E8;
+}
+.x-toolbar .x-segmentedbutton .x-button, .x-segmentedbutton .x-button{
+	border: 1px solid #fff;
+}
+.x-toolbar .x-segmentedbutton .x-button.x-button-pressed, .x-segmentedbutton .x-button.x-button-pressed{
+	    background-color: #fff;
+}
+.x-toolbar .x-segmentedbutton .x-button.x-button-pressed .x-button-label{
+	color: #3190E8;
+}
+.x-toolbar .x-segmentedbutton .x-last, .x-segmentedbutton .x-last{
+	border-right: 1px solid #fff;
+}
+.x-button-normal .x-button-label{
+	color: #fff;
+}
+
+div#ext-roombookingview-1 .x-input-el{
+	 background-color: #fff;
+     color: #A7A7A7;
+     background: #f5f5f5;
+     width: 94%;
+}
+div#ext-fieldset-2 .x-field-input{
+	border:0px;
+}
+#panelPages .x-form .x-field .x-field-input{
+	border:0px
+}
+.x-form-fieldset .x-field:before{
+	border:0px
+}
+.x-form-label span{
+	font-family: "微软雅黑";
+}
+div#ext-fieldset-2{
+	padding: 0.5em 0;
+    background: #fff;
+}
+#panelPages .x-form-fieldset .x-form-fieldset-inner{
+	border:0px
+}
+#panelPages #ext-fieldset-2 .x-field-mask {
+    border: 1px solid #c7c7c7;
+    margin-right:1em;
+    line-height: 2.2em;
+    padding-left: 0.5em;
+    
+}
+
+#panelPages #ext-input-5 {
+    border: 1px solid #C7C7C7;
+    margin-right: 1em;
+    margin-top:0em
+}
+#panelPages .x-field-select{
+	margin-top:0.5em
+}
+.x-form-fieldset-title {
+    padding: 1.5em .5em .5em 1em;
+    color: #555555;
+    font-weight: 400;
+    font-size: .9em;
+    background: #fff;
+    border-bottom: 1px solid #c7c7c7;
+    font-family: "微软雅黑";
+    margin:0px
+}
+div#ext-element-123 {
+    background: #f5f5f5;
+}
+div#ext-element-126 .x-field-labeled{
+	background: #fff;
+    margin-bottom: 0.5em;
+    border-bottom:1px solid #c7c7c7
+}
+
+.projector{
+	background: url(../images/img1.png) no-repeat;
+}
+
+.projector{
+	background: url(../images/img1.png) no-repeat;	
+}
+.sound{
+	background: url(../images/img2.png) no-repeat;
+}
+.video{
+	background: url(../images/img3.png) no-repeat;
+}
+.servicesDev{
+	background-size:auto 75%;
+	background-origin: border-box;
+	background-position:center left;
+	padding-left:1.8em
+}
+#ext-element-127{
+	background: #f5f5f5;
+}
+#ext-element-127 .x-empty,#ext-element-127 .x-field-clearable{
+	background: #fff;
+    margin-bottom: 0.5em;
+    border-bottom:1px solid #c7c7c7
+}
+#ext-element-127 .x-form-label{
+	background: #fff;
+}
+#ext-button-5,#ext-button-7{
+	background:#3190E8;
+	
+}
+#ext-button-5 .x-button-label{
+	color:#fff;
+	font-family: "微软雅黑";
+}
+.x-button.x-button-action .x-button-label{
+	    color: #fff;
+}
+
+#ext-actionsheet-1 .x-button{
+	height:1.5em;
+	border: 0px;
+	border-bottom:1px solid #D9D9D9;
+	border-radius: 0px;
+	
+}
+#ext-mask-3 span{
+	display:none;
+	color:#666
+}
+
+.x-sheet-action{
+	width: 150px;
+    top: 45px;
+    height: 200px;
+    border-radius:4px;
+    padding: 0px; 
+}
+.x-sheet-action .x-button-normal .x-button-label{
+	color:#666
+}
+.x-title .x-innerhtml{
+	color:#fff
+}
+.x-form-fieldset-inner .x-form .x-field .x-field-input{
+	border:0px
+}
+div#ext-roombookingview-1 #ext-element-108{
+	background:#fff
+}
+#panelPages #ext-element-127 .x-input-el {
+    background-color: #fff;
+    color: #666;
+    background: #fff;
+    width: 94%;
+}
