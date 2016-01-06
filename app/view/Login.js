@@ -9,11 +9,11 @@ Ext.define('IBApp.view.Login', {
 			type: 'vbox',
 			pack: 'center',
 		},
+		scrollable: false,
 		items: [
 			{
 				xtype: 'image',
-				src: './resources/icons/profile.png',
-				style: 'width:100px;height:100px;margin:auto'
+				src: './resources/icons/logo.png',
 			},
 			{
 				xtype: 'label',
@@ -32,14 +32,16 @@ Ext.define('IBApp.view.Login', {
 						itemId: 'userIdTextField',
 						placeHolder: '用户编号',
 						name: 'userIdTextField',
-						required: true
+						required: true,
+						clearIcon: false,
 					},
 					{
 						xtype: 'passwordfield',
 						itemId: 'passwordTextField',
 						placeHolder: '密码',
 						name: 'passwordTextField',
-						required: true
+						required: true,
+						clearIcon: false,
 					}
 				]
 			},
