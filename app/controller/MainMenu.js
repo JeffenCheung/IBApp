@@ -6,15 +6,19 @@ Ext.define("IBApp.controller.MainMenu", {
         refs: {
             // We're going to lookup our views by xtype.
             mainMenuView: 'mainmenuview',
+            funcIconView: 'funciconview',
             roomBookingView: 'roombookingview',
             myMeetingsView:'mymeetingsview',
             devCtrRoomListView: 'devctrroomlistview',
         },
         control: {
-        	mainMenuView: {
-        		roomBookingCommand: 'onRoomBookingCommand',
-        		MyMeetingsCommand:'onMyMeetingsCommand',
+            funcIconView: {
+                roomBookingCommand: 'onRoomBookingCommand',
+                MyMeetingsCommand:'onMyMeetingsCommand',
                 deviceControlCommand: 'onDeviceControlCommand',
+                scanningCodeCommand: 'onScanningCodeCommand',
+            },
+        	mainMenuView: {
                 signInCommand:'onSignInCommand',
         	},
         	roomBookingView: {
@@ -55,6 +59,10 @@ Ext.define("IBApp.controller.MainMenu", {
     onRoomBookingCommand: function () {
         this.getRoomBookingView().updateView();
         this.getApplication().getHistory().add(Ext.create('Ext.app.Action', {url: 'roombooking'}));
+    },
+
+    onScanningCodeCommand: function() {
+        this.getMainMenuView().onScanningCodeTap();
     },
 
     onDeviceControlCommand: function () {

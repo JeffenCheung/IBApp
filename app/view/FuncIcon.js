@@ -6,7 +6,6 @@ Ext.define('IBApp.view.FuncIcon', {
 	config: {
 		flex: 1,
 		margin: 5,
-		imageId: '',
 		imageSrc: '',
 		text: '',
 	},
@@ -16,7 +15,6 @@ Ext.define('IBApp.view.FuncIcon', {
 	    this.callParent(arguments);
 
 	    var image = Ext.create('Ext.Img', {
-	    	itemId: this.config.imageId,
 	    	src: this.config.imageSrc,
 	    	style: 'position: absolute;width:50%;height:35%;bottom: 15px;right: 5px;',
 	    });
@@ -27,6 +25,24 @@ Ext.define('IBApp.view.FuncIcon', {
 	    this.setHtml(['<p style="text-align:left">',
 	    	          this.config.text,
 	    	          '</p>'].join(""));
+
+	    var me = this;
+	    this.element.on({
+	    	tap: function() {
+	    		if (this.getId() == 'myMeetings') {
+	    			me.fireEvent('MyMeetingsCommand');
+	    		}
+	    		else if (this.getId() == 'roomBooking') {
+	    			me.fireEvent('roomBookingCommand');
+	    		}
+	    		else if (this.getId() == 'scanningCode') {
+	    			me.fireEvent('scanningCodeCommand');
+	    		}
+	    		else if (this.getId() == 'deviceControl') {
+	    			me.fireEvent('deviceControlCommand');
+	    		};
+	    	}
+	    })
 	},
 
 });

@@ -57,43 +57,11 @@ Ext.define('IBApp.view.MainMenu', {
 				event: 'tap',
 				fn: 'onLogoutButtonTap'
 			},
-			{
-				delegate: '#myMeetings',
-				event: 'tap',
-				fn: 'onMyMeetingsTap'
-			},
-			{
-				delegate: '#roomBooking',
-				event: 'tap',
-				fn: 'onRoomBookingTap'
-			},
-			{
-				delegate: '#scanningCode',
-				event: 'tap',
-				fn: 'onScanningCodeTap'
-			},
-			{
-				delegate: '#deviceControl',
-				event: 'tap',
-				fn: 'onDeviceControlTap'
-			}
 		]
 	},
 
 	onLogoutButtonTap: function() {
 		this.fireEvent('signOffCommand');
-	},
-
-	onMyMeetingsTap: function() {
-		this.fireEvent('MyMeetingsCommand');
-	},
-
-	onRoomBookingTap: function() {
-		this.fireEvent('roomBookingCommand');
-	},
-
-	onDeviceControlTap: function() {
-		this.fireEvent('deviceControlCommand');
 	},
 
 	onScanningCodeTap: function() {
@@ -164,13 +132,13 @@ Ext.define('IBApp.view.MainMenu', {
 		if (userRoles.indexOf('APP_ADMIN') != -1) {
 			/* 系统管理员权限 可使用所有功能模块 */
 			var funcIcon1 = Ext.create('IBApp.view.FuncIcon', {
-				imageId: 'myMeetings',
+				id: 'myMeetings',
 				imageSrc: './resources/icons/my_meeting.png',
 				text: '我的会议',
 				style: 'background-color: #3190e8;'
 			});
 			var funcIcon2 = Ext.create('IBApp.view.FuncIcon', {
-				imageId: 'roomBooking',
+				id: 'roomBooking',
 				imageSrc: './resources/icons/book_room.png',
 				text: '预定会议室',
 				style: 'background-color: #d470e0;'
@@ -179,13 +147,13 @@ Ext.define('IBApp.view.MainMenu', {
 			rowPanel1.add(funcIcon2);
 
 			var funcIcon3 = Ext.create('IBApp.view.FuncIcon', {
-				imageId: 'scanningCode',
+				id: 'scanningCode',
 				imageSrc: './resources/icons/scan_code.png',
 				text: '扫码签到',
 				style: 'background-color: #3bdddf;'
 			});
 			var funcIcon4 = Ext.create('IBApp.view.FuncIcon', {
-				imageId: 'deviceControl',
+				id: 'deviceControl',
 				imageSrc: './resources/icons/device_control.png',
 				text: '设备控制',
 				style: 'background-color: #7fcf52;'
@@ -194,13 +162,13 @@ Ext.define('IBApp.view.MainMenu', {
 			rowPanel2.add(funcIcon4);
 			
 			var funcIcon5 = Ext.create('IBApp.view.FuncIcon', {
-				imageId: 'meetingRoomManage',
+				id: 'meetingRoomManage',
 				imageSrc: './resources/icons/room_manage.png',
 				text: '会议统计',
 				style: 'background-color: #91E698;'
 			});
 			var funcIcon6 = Ext.create('IBApp.view.FuncIcon', {
-				imageId: 'serverList',
+				id: 'serverList',
 				imageSrc: './resources/icons/server_list.png',
 				text: '服务任务',
 				style: 'background-color: #B6D20C;'
@@ -210,25 +178,25 @@ Ext.define('IBApp.view.MainMenu', {
 		}
 		else if (userRoles.indexOf('APP_USER') != -1) {
 			var funcIcon1 = Ext.create('IBApp.view.FuncIcon', {
-				imageId: 'myMeetings',
+				id: 'myMeetings',
 				imageSrc: './resources/icons/my_meeting.png',
 				text: '我的会议',
 				style: 'background-color: #3190e8;'
 			});
 			var funcIcon2 = Ext.create('IBApp.view.FuncIcon', {
-				imageId: 'roomBooking',
+				id: 'roomBooking',
 				imageSrc: './resources/icons/book_room.png',
 				text: '预定会议室',
 				style: 'background-color: #d470e0;'
 			});
 			var funcIcon3 = Ext.create('IBApp.view.FuncIcon', {
-				imageId: 'scanningCode',
+				id: 'scanningCode',
 				imageSrc: './resources/icons/scan_code.png',
 				text: '扫码签到',
 				style: 'background-color: #3bdddf;'
 			});
 			var funcIcon4 = Ext.create('IBApp.view.FuncIcon', {
-				imageId: 'deviceControl',
+				id: 'deviceControl',
 				imageSrc: './resources/icons/device_control.png',
 				text: '设备控制',
 				style: 'background-color: #7fcf52;'
