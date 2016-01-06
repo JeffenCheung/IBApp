@@ -68,7 +68,7 @@ Ext.define('Ext.field.Field', {
          * @cfg {Number/String} labelWidth The width to make this field's label.
          * @accessor
          */
-        labelWidth: '35%',
+        labelWidth: '30%',
 
         /**
          * @cfg {Boolean} labelWrap `true` to allow the label to wrap. If set to `false`, the label will be truncated with

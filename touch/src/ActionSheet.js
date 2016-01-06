@@ -46,7 +46,7 @@ Ext.define('Ext.ActionSheet', {
          * @cfg
          * @inheritdoc
          */
-        left: 0,
+//      left: 0,
 
         /**
          * @cfg

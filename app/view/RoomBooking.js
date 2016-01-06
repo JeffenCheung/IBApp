@@ -277,6 +277,7 @@ Ext.define("IBApp.view.RoomBooking", {
         ]);
 
         panelPages.setActiveItem(0);
+       
     },
 
     updateView: function() {
@@ -292,6 +293,7 @@ Ext.define("IBApp.view.RoomBooking", {
             });
             task.delay(500);
         };
+        
     },
 
     onBackButtonTap: function() {
@@ -359,6 +361,21 @@ Ext.define("IBApp.view.RoomBooking", {
             }
             deviceFieldset.add(device);
         }
+        var recommendBook=document.getElementById("recommendBookingPanel"); 
+		var spanPanel=recommendBook.getElementsByTagName("span"); 
+		for (var i=0; i<spanPanel.length; i++){
+			   var li=spanPanel[i];
+			   var msg=li.innerText;
+			   if(msg=="投影仪"){
+			   	 li.setAttribute("class","servicesDev projector");
+			   } 
+			   if(msg=="音响"){
+			   	 li.setAttribute("class","servicesDev sound");
+			   }
+			   if(msg=="视频"){
+			   	 li.setAttribute("class","servicesDev video");
+			   }
+		}
     },
 
     showServices: function(servicesArray) {
@@ -455,3 +472,4 @@ Ext.define("IBApp.view.RoomBooking", {
         return date;
     },
 });
+
